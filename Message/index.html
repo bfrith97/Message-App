@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Messages</title>
+  </head>
+  <body>
+    <div class="modal-background"></div>
+    <div class="login-modal">
+      <div class="login-title">Choose a user to log in as...</div>
+      <div class="login-buttons">
+        <button class="login-button login-button-one">USER 1</button>
+        <button class="login-button login-button-two">USER 2</button>
+      </div>
+    </div>
+    <div class="container-parent">
+      <div class="container-user">
+        <img
+          src="/Message/imgs/92c44a461e695d443dd1db1b02938e37.jpg"
+          alt="Italian Trulli"
+          class="user-image"
+        />
+        <div class="user-welcome-txt">Welcome *user*</div>
+        <button class="btn-user btn-signout">Sign out</button>
+        <button class="btn-user btn-editinfo">Edit User</button>
+      </div>
+
+      <div class="container-chat">
+        <div class="user-details"></div>
+        <div class="main-title">Web Messenger</div>
+        <div class="chats-selectors">
+          <div class="chat-selector">Chat 1</div>
+          <div class="chat-selector">Chat 2</div>
+          <div class="chat-selector">Chat 3</div>
+          <div class="chat-selector">Chat 4</div>
+        </div>
+        <div class="chat-box">
+          <div class="chat-window chat-window1 chat-window-active">
+            <div class="message-top"></div>
+          </div>
+          <div class="chat-window chat-window2">
+            <div class="message-top"></div>
+          </div>
+          <div class="chat-window chat-window3">
+            <div class="message-top"></div>
+          </div>
+          <div class="chat-window chat-window4">
+            <div class="message-top"></div>
+          </div>
+          <form class="message-write">
+            <textarea class="message-content"></textarea>
+            <button class="message-send" input type="button">SEND</button>
+          </form>
+        </div>
+      </div>
+      <div class="container-user">
+        <img
+          src="/Message/imgs/OSIRIS_Mars_true_color.jpg"
+          alt="Italian Trulli"
+          class="partner-image"
+        />
+        <div class="user-welcome-txt">Chat Partner</div>
+        <div class="user-partner-name">*Partner name*</div>
+        <button class="btn-user btn-clearchat">Clear Chat</button>
+      </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>
