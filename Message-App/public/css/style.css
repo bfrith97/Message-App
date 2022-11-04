@@ -22,7 +22,7 @@ body {
     position: fixed;
     z-index: 2;
     backdrop-filter: blur(5px);
-    /* display: none; */
+    display: none;
   }
   
   .login-modal {
@@ -38,7 +38,7 @@ body {
     box-shadow: 1px 0px 10px 2px rgba(0, 0, 0, 0.336);
     min-height: 250px;
     min-width: 250px;
-    /* display: none; */
+    display: none;
   }
   
   .login-title {
@@ -116,14 +116,14 @@ body {
   }
   
   .container-user-right {
-    display: none;
+    display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto 1fr 1fr;
     padding-bottom: 10px;
   }
   
   .container-user-left {
-    display: none;
+    display: flex;
     flex-direction: column;
   }
   
@@ -191,7 +191,7 @@ body {
   MESSAGES
   */
   .chats-selectors {
-    display: none;
+    display: flex;
     background-color: rgb(247, 247, 247);
     margin: auto;
     width: 50vw;
@@ -272,7 +272,7 @@ body {
   }
   
   .message-write {
-    display: none;
+    display: flex;
     flex-direction: row;
     background-color: rgb(247, 247, 247);
     border: 1px solid rgb(197, 197, 197);
@@ -287,7 +287,7 @@ body {
     border: none;
     resize: none;
     font-size: 18px;
-    display: none;
+    display: flex;
   }
   
   .message-content:focus {
@@ -299,7 +299,7 @@ body {
     border: none;
     border-left: 1px solid rgb(197, 197, 197);
     background-color: rgb(235, 235, 235);
-    display: none;
+    display: flex;
   }
   
   .message-send:hover {

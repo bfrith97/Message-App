@@ -9,7 +9,7 @@ class Message extends Model
 {
     use HasFactory;
 
-    protected $connection = 'message_app';
+    protected $connection = 'mysql';
 
     /**
      * @var string
@@ -20,4 +20,6 @@ class Message extends Model
         'user_id',
         'content'
     ];
+
+    public $timestamps = false;
 }

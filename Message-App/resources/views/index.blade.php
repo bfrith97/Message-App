@@ -20,10 +20,15 @@
     </div>
     <div class="container-parent">
       <div class="container-user container-user-left">
-        <div class="user-welcome-txt">Welcome *user*</div>
-        <button class="btn-user btn-signout">Sign out</button>
+        <div class="user-welcome-txt">Welcome, {{ucwords(auth()->user()->name) . '!'}}</div>
+        <form action="/logout" method="post">
+          @csrf
+          <input class="btn-user btn-signout" type="submit" value="Log out">
+        </form>
         <button class="btn-user btn-editinfo">Edit User</button>
-        <button class="btn-user btn-clearchat">Clear Chat</button>
+        <a href="/clear">
+          <button class="btn-user btn-clearchat">Clear Chat</button>
+        </a>
       </div>
 
       <div class="container-chat">
@@ -37,7 +42,11 @@
         </div>
         <div class="chat-box">
           <div class="chat-window chat-window1 chat-window-active">
-            <div class="message-top"></div>
+            <div class="message-top">
+              @foreach ($messages as $message)
+                <div class="message-user-{{$message->user_id == 1 ? 'one' : 'two'}}">{{$message->content}}</div>
+              @endforeach
+            </div>
           </div>
           <div class="chat-window chat-window2">
             <div class="message-top"></div>
@@ -48,9 +57,10 @@
           <div class="chat-window chat-window4">
             <div class="message-top"></div>
           </div>
-          <form class="message-write">
-            <textarea class="message-content"></textarea>
-            <button class="message-send" input type="button">SEND</button>
+          <form action="/send" method="post">
+            @csrf
+            <input type="text" id="content" name="content">
+            <input type="submit" value="Submit">
           </form>
         </div>
       </div>
@@ -62,13 +72,13 @@
           class="user-image"
         />
 
-        <div class="user-partner-name">Person 1</div>
+        <div class="user-partner-name">{{$users[0]->name}}</div>
         <img
           src="{{ asset('img/user2.jpg') }}"
           alt="User 2's image"
           class="partner-image"
         />
-        <div class="user-partner-name">Person 2</div>
+        <div class="user-partner-name">{{$users[1]->name}}</div>
       </div>
     </div>
   </body>

@@ -114,8 +114,9 @@ const userImg = document.querySelector(".user-image");
 // SIGN OUT
 
 signOutBtn.addEventListener("click", () => {
-  modalBkgrnd.style.display = "initial";
-  lgnModal.style.display = "initial";
+  console.log('hello');
+  modalBkgrnd.style.display = "block";
+  lgnModal.style.display = "block";
   chatFirst.classList.remove("chatbar-active");
   chat.forEach((chat) => {
     if (chat.classList.contains("chatbar-active")) {
