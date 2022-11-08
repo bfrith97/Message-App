@@ -51,6 +51,12 @@ const chatWindow = document.querySelectorAll(".chat-window");
 const btnSend = document.querySelector(".message-send");
 const clearChat = document.querySelector(".btn-clearchat");
 
+function checkSubmit(e) {
+  if(e && e.keyCode == 13) {
+     document.forms[0].submit();
+  }
+}
+
 // chat.forEach((msgTop) => {
 //   msgTop.addEventListener("click", () => {
 //     if (!msgTop.classList.contains("chatbar-active")) {
@@ -68,23 +74,23 @@ const clearChat = document.querySelector(".btn-clearchat");
 //   });
 // });
 
-msgContent.addEventListener("keydown", (key) => {
-  if (key.key === "Enter") {
-    if (!msgContent.value.length == 0) {
-      msgCreate.innerHTML = msgContent.value;
-      msgTop.insertAdjacentHTML(
-        "beforeend",
-        `<div class="message-user-${currentUser === 1 ? "one" : "two"}">${
-          msgContent.value
-        }</div>`
-      );
-      //
-    }
-    console.log("Clearing...");
-    msgContent.value = "";
-    key.preventDefault();
-  }
-});
+// msgContent.addEventListener("keydown", (key) => {
+//   if (key.key === "Enter") {
+//     if (!msgContent.value.length == 0) {
+//       msgCreate.innerHTML = msgContent.value;
+//       msgTop.insertAdjacentHTML(
+//         "beforeend",
+//         `<div class="message-user-${currentUser === 1 ? "one" : "two"}">${
+//           msgContent.value
+//         }</div>`
+//       );
+//       //
+//     }
+//     console.log("Clearing...");
+//     msgContent.value = "";
+//     key.preventDefault();
+//   }
+// });
 
 btnSend.addEventListener("click", () => {
   if (!msgContent.value.length == 0) {

@@ -9,6 +9,8 @@
 
     <title>Messages</title>
   </head>
+
+
   <body>
     <div class="modal-background"></div>
     <div class="login-modal">
@@ -35,7 +37,7 @@
         <div class="user-details"></div>
         <div class="main-title">Web Messenger</div>
         <div class="chats-selectors">
-          <div class="chat-selector">Chat 1</div>
+          <div class="chat-selector chatbar-active">Chat 1</div>
           <div class="chat-selector">Chat 2</div>
           <div class="chat-selector">Chat 3</div>
           <div class="chat-selector">Chat 4</div>
@@ -44,7 +46,9 @@
           <div class="chat-window chat-window1 chat-window-active">
             <div class="message-top">
               @foreach ($messages as $message)
-                <div class="message-user-{{$message->user_id == 1 ? 'one' : 'two'}}">{{$message->content}}</div>
+                <div class="message-label-{{$message->user_id == Auth::id() ? 'one' : 'two'}}">{{$message->user_id == Auth::id() ? 'You' : ucwords($message->user->name)}}</div>
+                <div class="message-user-{{$message->user_id == Auth::id() ? 'one' : 'two'}}">{{$message->content}}</div>
+                
               @endforeach
             </div>
           </div>
@@ -57,30 +61,22 @@
           <div class="chat-window chat-window4">
             <div class="message-top"></div>
           </div>
-          <form action="/send" method="post">
+          <form action="/send" method="post" class="message-form">
             @csrf
-            <input type="text" id="content" name="content">
-            <input type="submit" value="Submit">
+            <input  type="hidden" id="conversation" name="conversation" value="1">
+            <input  type="hidden" id="user" name="user" value="{{auth()->user()->id}}">
+            <input class="message-content" type="text" id="content" name="content">
+            <input type="submit" value="Submit" onkeypress="return checkSubmit(event">
           </form>
         </div>
       </div>
       <div class="container-user container-user-right">
         <div class="user-chat-info">Chat members:</div>
-        <img
-          src="{{ asset('img/user1.jpg') }}"
-          alt="User 1's image"
-          class="user-image"
-        />
+        <ul>
 
-        <div class="user-partner-name">{{$users[0]->name}}</div>
-        <img
-          src="{{ asset('img/user2.jpg') }}"
-          alt="User 2's image"
-          class="partner-image"
-        />
-        <div class="user-partner-name">{{$users[1]->name}}</div>
+        </ul>
+        </div>
       </div>
-    </div>
-  </body>
+    </body>
   <script src="{{ asset('js/script.js') }}"></script>
 </html>

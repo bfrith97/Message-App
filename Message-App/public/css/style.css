@@ -116,10 +116,13 @@ body {
   }
   
   .container-user-right {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto 1fr 1fr;
     padding-bottom: 10px;
+    list-style: none;;
+  }
+
+  .users_list {
+    list-style: none;
+    padding: 4px 0;
   }
   
   .container-user-left {
@@ -204,7 +207,6 @@ body {
   .chat-selector {
     text-align: left;
     font-size: 20px;
-    /* width: 230px; */
     margin: -5px;
     padding: 2px 20px;
     background-color: rgb(230, 230, 230);
@@ -239,7 +241,7 @@ body {
   .chat-window {
     background-color: rgb(247, 247, 247);
     border: 1px solid rgb(197, 197, 197);
-    height: 80%;
+    height: 89%;
     margin: 10px;
     overflow-y: scroll;
     display: none;
@@ -250,8 +252,9 @@ body {
     display: flex;
   }
   
-  .message-user-one {
-    background-color: rgb(43, 82, 255);
+  .message-user-two {
+    background-color:   rgb(255, 54, 28);
+
     color: white;
     width: fit-content;
     margin: 25px;
@@ -260,15 +263,28 @@ body {
     font-size: 25px;
   }
   
-  .message-user-two {
-    background-color: rgb(255, 54, 28);
+  .message-user-one {
+    background-color: rgb(43, 82, 255);
     color: white;
     width: fit-content;
-  
     margin: 25px 25px 25px auto;
     padding: 10px;
     border-radius: 15px 15px 0 15px;
     font-size: 25px;
+  }
+
+  .message-label-one {
+    width: fit-content;
+    margin: 25px 25px -17.5px auto;
+    font-size: 12.5px;
+    opacity: 50%;
+  }
+
+  .message-label-two {
+    width: fit-content;
+    margin: 25px 25px -17.5px 25px;
+    font-size: 12.5px;
+    opacity: 50%;
   }
   
   .message-write {
@@ -282,7 +298,6 @@ body {
   }
   
   .message-content {
-    height: 90%;
     width: 99.5%;
     border: none;
     resize: none;
@@ -294,6 +309,14 @@ body {
     outline: none;
   }
   
+  .message-form {
+    display: flex;
+    height: 4vh;
+    width: 97%;
+    margin: 0 auto;
+    border: 1px solid rgb(197, 197, 197);
+  }
+
   .message-send {
     width: 125px;
     border: none;
@@ -305,5 +328,10 @@ body {
   .message-send:hover {
     cursor: pointer;
     background-color: rgb(230, 230, 230);
+  }
+
+  input {
+    border: 0;
+    border-left:1px solid rgb(197, 197, 197);
   }
   
