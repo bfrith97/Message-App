@@ -89,6 +89,7 @@ const userImg = document.querySelector(".user-image");
 const editUserBtn = document.querySelector('.btn-editinfo');
 const userModal = document.querySelector('.user-modal');
 const userModalCloseBtn = document.querySelector('.user-window-close');
+const containerLeft = document.querySelector('.container-user-left');
 
 let userModalHidden = 0;
 editUserBtn.addEventListener('click', () => {
@@ -109,6 +110,16 @@ userModalCloseBtn.addEventListener('click', () => {
     userModal.style.display = 'none';
     userModalHidden = 0
   }
+})
+
+containerLeft.addEventListener('mouseover', () => {
+  containerLeft.style.transform = 'translateX(0%)';
+})
+
+containerLeft.addEventListener('mouseleave', () => {
+  setTimeout(() => {
+    containerLeft.style.transform = 'translateX(80%)';
+  }, 300);
 })
 
 // SIGN OUT

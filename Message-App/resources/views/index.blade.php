@@ -26,15 +26,30 @@
     </div>
     <div class="container-parent">
       <div class="container-user container-user-left">
-        <div class="user-welcome-txt">Welcome, {{ucwords(auth()->user()->name) . '!'}}</div>
-        <form action="/logout" method="post">
-          @csrf
-          <input class="btn-user btn-signout" type="submit" value="Log out">
-        </form>
-        <button class="btn-user btn-editinfo">Edit User</button>
-        <a href="/clear">
-          <button class="btn-user btn-clearchat">Clear Chat</button>
-        </a>
+        <div class="user-hints">
+          <p class="user-hint"><</p>
+          <p class="user-hint"><</p>
+          <p class="user-hint"><</p>
+          <p class="user-hint"><</p>
+          <p class="user-hint"><</p>
+          <p class="user-hint"><</p>
+          <p class="user-hint"><</p>
+          <p class="user-hint"><</p>
+          <p class="user-hint"><</p>
+        </div>
+        <div class="user-buttons">
+          
+          <div class="user-welcome-txt">Welcome,</div>
+          <div class="user-welcome-txt">{{ucwords(explode(' ', auth()->user()->name)[0])}}!</div>
+          <form action="/logout" method="post">
+            @csrf
+            <input class="btn-user btn-signout" type="submit" value="Log out">
+          </form>
+          <button class="btn-user btn-editinfo">Edit User</button>
+          <a href="/clear">
+            <button class="btn-user btn-clearchat">Clear Chat</button>
+          </a>
+        </div>
       </div>
 
       <div class="container-chat">
@@ -50,7 +65,7 @@
           <div class="chat-window chat-window1 chat-window-active">
             <div class="message-top">
               @foreach ($messages as $message)
-                <div class="message-label-{{$message->user_id == Auth::id() ? 'one' : 'two'}}">{{$message->user_id == Auth::id() ? 'You' : ucwords($message->user->name)}}</div>
+                <div class="message-label-{{$message->user_id == Auth::id() ? 'one' : 'two'}}">{{$message->user_id == Auth::id() ? 'You' : ucwords(explode(' ', $message->user->name)[0])}}</div>
                 <div class="message-user-{{$message->user_id == Auth::id() ? 'one' : 'two'}}">{{$message->content}}</div>
                 
               @endforeach
@@ -69,7 +84,7 @@
             @csrf
             <input  type="hidden" id="conversation" name="conversation" value="1">
             <input  type="hidden" id="user" name="user" value="{{auth()->user()->id}}">
-            <input class="message-content" type="text" id="content" name="content">
+            <input class="message-content" type="text" id="content" name="content" autofocus>
             <input type="submit" value="Submit" onkeypress="return checkSubmit(event">
           </form>
         </div>
