@@ -61,4 +61,14 @@ class IndexController extends Controller
 
         return redirect('/');
     }
+
+    public function update(Request $request)
+    {
+        $data = ['name' => $request->input('name')];
+        $user = User::where('id', auth()->user()->id);
+
+        $user->update($data);
+
+        return redirect('/');
+    }
 }

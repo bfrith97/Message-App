@@ -10,15 +10,19 @@
     <title>Messages</title>
   </head>
 
-
   <body>
     <div class="modal-background"></div>
-    <div class="login-modal">
-      <div class="login-title">Choose a user to log in as...</div>
-      <div class="login-buttons">
-        <button class="login-button login-button-one">USER 1</button>
-        <button class="login-button login-button-two">USER 2</button>
-      </div>
+    <div class="user-modal">
+      <div class="user-title">Edit your information:</div>
+      <form action="/update-user" class="user-form" method="POST">
+        @csrf
+        <div class="user-name">
+          <label for="name">Name:</label>
+          <input type="text" name="name" id="name" value={{ucwords(auth()->user()->name)}}>
+          <input type="submit" value="Save changes" class="user-submit">
+        </div>
+        <button type="button" class="user-window-close">Close window</button>
+      </form>
     </div>
     <div class="container-parent">
       <div class="container-user container-user-left">

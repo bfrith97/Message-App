@@ -74,36 +74,6 @@ function checkSubmit(e) {
 //   });
 // });
 
-// msgContent.addEventListener("keydown", (key) => {
-//   if (key.key === "Enter") {
-//     if (!msgContent.value.length == 0) {
-//       msgCreate.innerHTML = msgContent.value;
-//       msgTop.insertAdjacentHTML(
-//         "beforeend",
-//         `<div class="message-user-${currentUser === 1 ? "one" : "two"}">${
-//           msgContent.value
-//         }</div>`
-//       );
-//       //
-//     }
-//     console.log("Clearing...");
-//     msgContent.value = "";
-//     key.preventDefault();
-//   }
-// });
-
-btnSend.addEventListener("click", () => {
-  if (!msgContent.value.length == 0) {
-    msgCreate.innerHTML = msgContent.value;
-    msgTop.insertAdjacentHTML(
-      "beforeend",
-      `<div class="message-user-${currentUser === 1 ? "one" : "two"}">${
-        msgContent.value
-      }</div>`
-    );
-    msgContent.value = "";
-  }
-});
 
 clearChat.addEventListener("click", () => {
   msgTop.innerHTML = "";
@@ -116,6 +86,30 @@ const signOutBtn = document.querySelector(".btn-signout");
 const ctnrUserRight = document.querySelector(".container-user-right");
 const ctnrUserLeft = document.querySelector(".container-user-left");
 const userImg = document.querySelector(".user-image");
+const editUserBtn = document.querySelector('.btn-editinfo');
+const userModal = document.querySelector('.user-modal');
+const userModalCloseBtn = document.querySelector('.user-window-close');
+
+let userModalHidden = 0;
+editUserBtn.addEventListener('click', () => {
+  if (userModalHidden == 0) {
+    userModal.style.display = 'initial';
+    userModalHidden = 1
+  } else if (userModalHidden == 1) {
+    userModal.style.display = 'none';
+    userModalHidden = 0
+  }
+})
+
+userModalCloseBtn.addEventListener('click', () => {
+  if (userModalHidden == 0) {
+    userModal.style.display = 'initial';
+    userModalHidden = 1
+  } else if (userModalHidden == 1) {
+    userModal.style.display = 'none';
+    userModalHidden = 0
+  }
+})
 
 // SIGN OUT
 

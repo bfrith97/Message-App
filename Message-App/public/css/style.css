@@ -25,13 +25,13 @@ body {
     display: none;
   }
   
-  .login-modal {
+  .user-modal {
     background-color: rgba(89, 178, 255, 0.397);
     position: fixed;
     left: 50%;
     top: 45%;
     transform: translate(-50%, -50%);
-    height: 30%;
+    height: fit-content;
     width: 30%;
     z-index: 3;
     border-radius: 20px;
@@ -41,45 +41,24 @@ body {
     display: none;
   }
   
-  .login-title {
+  .user-title {
     text-align: center;
     font-size: 25px;
     margin-top: 5%;
   }
-  
-  .login-buttons {
+
+  .user-form {
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
   }
-  
-  .login-button {
-    background-color: none;
-    color: inherit;
-    border: none;
-    padding: 10%;
-    margin-top: 20px;
-    font: inherit;
-    cursor: pointer;
-    outline: inherit;
-    box-shadow: 3px 3px 3px 1px rgb(0, 0, 0);
+
+  .user-name {
+    display: flex;
+    margin-bottom: 15px;
   }
-  
-  .login-button:hover {
-    box-shadow: 1.5px 1.5px 3px 1px rgb(0, 0, 0);
-  }
-  
-  .login-button:active {
-    box-shadow: 0.5px 0.5px 3px 1px rgb(0, 0, 0);
-  }
-  
-  .login-button-one {
-    background-color: rgb(43, 82, 255);
-  }
-  
-  .login-button-two {
-    background-color: rgb(255, 54, 28);
-  }
-  
+
   /**/
   .container-chat {
     display: flex;
@@ -128,6 +107,8 @@ body {
   .container-user-left {
     display: flex;
     flex-direction: column;
+    justify-items: center;
+    align-items: center;
   }
   
   .user-chat-info {
@@ -163,7 +144,6 @@ body {
   }
   
   .btn-user {
-    width: 50%;
     margin: 5px auto;
     padding: 5px;
     border: none;

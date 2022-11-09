@@ -20,5 +20,7 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::get('/', [\App\Http\Controllers\IndexController::class, 'show'])->middleware(['auth', 'verified']);
-Route::post('/send', [\App\Http\Controllers\IndexController::class, 'store']);
 Route::get('/clear', [\App\Http\Controllers\IndexController::class, 'destroy']);
+
+Route::post('/send', [\App\Http\Controllers\IndexController::class, 'store']);
+Route::post('/update-user', [\App\Http\Controllers\IndexController::class, 'update']);
