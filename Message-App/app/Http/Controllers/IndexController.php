@@ -22,9 +22,16 @@ class IndexController extends Controller
             ->get();
 
         $users = User::select()
+            ->with([
+                'conversations:*',
+                'messages:*'
+            ])
             ->get();
 
         $conversation = Conversation::select()
+            ->with([
+                'participants:*'
+            ])
             ->get();
 
         $data = ['messages' =>$messages, 
@@ -64,7 +71,11 @@ class IndexController extends Controller
 
     public function update(Request $request)
     {
-        $data = ['name' => $request->input('name')];
+        $data = [
+            'name' => $request->input('name'),
+            'chat_colour' => $request->input('chat_colour')
+        ];
+        // dd($request->input('chat_colour'));
         $user = User::where('id', auth()->user()->id);
 
         $user->update($data);

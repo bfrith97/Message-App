@@ -4,11 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Conversation extends Model
+class ConversationParticipants extends Model
 {
     use HasFactory;
 
@@ -17,11 +16,11 @@ class Conversation extends Model
     /**
      * @var string
      */
-    protected $table = 'conversations';
+    protected $table = 'conversation_participants';
 
     protected $fillable = [
-        'user1_id',
-        'user2_id'
+        'user_id',
+        'conversation_id'
     ];
 
     public $timestamps = false;
@@ -31,8 +30,8 @@ class Conversation extends Model
         return $this->hasMany(Message::class, 'id', 'conversation_id');
     }
 
-    public function participants(): BelongsToMany
+    public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'conversation_participants', 'conversation_id', 'user_id');
+        return $this->belongsToMany(User::class, 'user_id', 'id');
     }
 }

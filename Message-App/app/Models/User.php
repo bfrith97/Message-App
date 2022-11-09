@@ -23,7 +23,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password'
+        'password',
+        'chat_colour'
     ];
 
     public $timestamps = false;
@@ -40,11 +41,11 @@ class User extends Authenticatable
 
     public function conversations() 
     {
-        return $this->belongsToMany(Conversation::class);
+        return $this->belongsToMany(Conversation::class, 'conversation_participants', 'user_id', 'conversation_id');
     }
 
     public function messages()
     {
-        return $this->hasMany(Message::class);
+        return $this->hasMany(Message::class, 'user_id', 'id');
     }
 }

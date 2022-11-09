@@ -11,14 +11,18 @@
   </head>
 
   <body>
+    {{-- {{Session::put('activeChat', 1)}}
+    {{dd(Session::get('activeChat'))}} --}}
     <div class="modal-background"></div>
     <div class="user-modal">
-      <div class="user-title">Edit your information:</div>
+      <div class="user-title">Edit your profile:</div>
       <form action="/update-user" class="user-form" method="POST">
         @csrf
         <div class="user-name">
-          <label for="name">Name:</label>
-          <input type="text" name="name" id="name" value={{ucwords(auth()->user()->name)}}>
+          <label class="user-label" for="name">Name:</label>
+          <input type="text" name="name" id="name" value="{{ucwords(auth()->user()->name)}}">
+          <label class="user-label" for="chat_colour">Colour code:</label>
+          <input class="colour-picker" type="color" name="chat_colour" id="chat_colour" value="{{auth()->user()->chat_colour}}" >
           <input type="submit" value="Save changes" class="user-submit">
         </div>
         <button type="button" class="user-window-close">Close window</button>
@@ -47,7 +51,7 @@
           </form>
           <button class="btn-user btn-editinfo">Edit User</button>
           <a href="/clear">
-            <button class="btn-user btn-clearchat">Clear Chat</button>
+            <button class="btn-user btn-clearchat" onclick="return confirm('Are you sure you want to delete the chat contents for everyone?')">Clear Chat</button>
           </a>
         </div>
       </div>
@@ -56,18 +60,17 @@
         <div class="user-details"></div>
         <div class="main-title">Web Messenger</div>
         <div class="chats-selectors">
-          <div class="chat-selector chatbar-active">Chat 1</div>
-          <div class="chat-selector">Chat 2</div>
-          <div class="chat-selector">Chat 3</div>
-          <div class="chat-selector">Chat 4</div>
+          <div class="chat-selector" onclick="localStorage.setItem('activeChat', 1), window.location.reload()">Chat 1</div>
+          <div class="chat-selector" onclick="localStorage.setItem('activeChat', 2), window.location.reload()">Chat 2</div>
+          <div class="chat-selector" onclick="localStorage.setItem('activeChat', 3), window.location.reload()">Chat 3</div>
+          <div class="chat-selector" onclick="localStorage.setItem('activeChat', 4), window.location.reload()">Chat 4</div>
         </div>
         <div class="chat-box">
-          <div class="chat-window chat-window1 chat-window-active">
+          <div class="chat-window chat-window1">
             <div class="message-top">
               @foreach ($messages as $message)
                 <div class="message-label-{{$message->user_id == Auth::id() ? 'one' : 'two'}}">{{$message->user_id == Auth::id() ? 'You' : ucwords(explode(' ', $message->user->name)[0])}}</div>
-                <div class="message-user-{{$message->user_id == Auth::id() ? 'one' : 'two'}}">{{$message->content}}</div>
-                
+                <div class="message-user-{{$message->user_id == Auth::id() ? 'one' : 'two'}}" style="{{'background-color:' . $message->user->chat_colour}}">{{$message->content}}</div>
               @endforeach
             </div>
           </div>
@@ -90,9 +93,14 @@
         </div>
       </div>
       <div class="container-user container-user-right">
-        <div class="user-chat-info">Chat members:</div>
+        <div class="user-chat-info">Chat members</div>
         <ul>
-
+          <li>You</li>
+          @foreach (($conversation[0]->participants) as $participant)
+              @if ($participant->id !== auth()->user()->id)
+              <li>{{ucwords(explode(' ', $participant->name)[0])}}</li>
+              @endif
+          @endforeach
         </ul>
         </div>
       </div>

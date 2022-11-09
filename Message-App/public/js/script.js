@@ -43,13 +43,19 @@ buttons.forEach((button) => {
 // CHAT
 
 const msgCreate = document.createElement("div");
-const msgTop = document.querySelector(".message-top");
+// const msgTop = document.querySelector(".message-top");
 const msg = document.querySelectorAll(".message");
 const msgContainer = document.querySelector(".message-write");
 const msgContent = document.querySelector(".message-content");
 const chatWindow = document.querySelectorAll(".chat-window");
 const btnSend = document.querySelector(".message-send");
 const clearChat = document.querySelector(".btn-clearchat");
+const window1 = document.querySelector('.chat-window1');
+const window2 = document.querySelector('.chat-window2');
+const window3 = document.querySelector('.chat-window3');
+const window4 = document.querySelector('.chat-window4');
+
+console.log(localStorage.getItem('activeChat'));
 
 function checkSubmit(e) {
   if(e && e.keyCode == 13) {
@@ -57,27 +63,64 @@ function checkSubmit(e) {
   }
 }
 
-// chat.forEach((msgTop) => {
-//   msgTop.addEventListener("click", () => {
-//     if (!msgTop.classList.contains("chatbar-active")) {
-//       chat.forEach((element) => {
-//         element.classList.remove("chatbar-active");
-//       });
-//       msgTop.classList.add("chatbar-active");
-//     }
-//   });
-// });
-
-// chat.forEach((selector) => {
-//   selector.addEventListener("click", () => {
-//     selector.parentElement.children.classList.remove("chat-window-active");
-//   });
-// });
+chat.forEach((msgTop) => {
+  msgTop.addEventListener("click", () => {
+    if (!msgTop.classList.contains("chatbar-active")) {
+      chat.forEach((element) => {
+        element.classList.remove("chatbar-active");
+      });
+      msgTop.classList.add("chatbar-active");
+      
+    }
 
 
-clearChat.addEventListener("click", () => {
-  msgTop.innerHTML = "";
+  });
 });
+
+const activeChatNum = localStorage.getItem('activeChat');
+
+chat.forEach((singleChat) => {
+  singleChat.addEventListener('click', () => {
+ 
+  })
+})
+
+switch (activeChatNum) {
+  case '1':
+    console.log('one')
+    window1.classList.add('chat-window-active')
+    window2.classList.remove('chat-window-active')
+    window3.classList.remove('chat-window-active')
+    window4.classList.remove('chat-window-active')
+    break;
+
+  case '2':
+    console.log('two')
+    window1.classList.remove('chat-window-active')
+    window2.classList.add('chat-window-active')
+    window3.classList.remove('chat-window-active')
+    window4.classList.remove('chat-window-active')
+    break;
+
+  case '3':
+    console.log('three')
+    window1.classList.remove('chat-window-active')
+    window2.classList.remove('chat-window-active')
+    window3.classList.add('chat-window-active')
+    window4.classList.remove('chat-window-active')
+    break;
+
+  case '4':
+    console.log('four')
+    window1.classList.remove('chat-window-active')
+    window2.classList.remove('chat-window-active')
+    window3.classList.remove('chat-window-active')
+    window4.classList.add('chat-window-active')
+    break;
+  default:
+    console.log('default')
+    break;
+}
 
 // USERS
 
@@ -94,21 +137,35 @@ const containerLeft = document.querySelector('.container-user-left');
 let userModalHidden = 0;
 editUserBtn.addEventListener('click', () => {
   if (userModalHidden == 0) {
-    userModal.style.display = 'initial';
-    userModalHidden = 1
+    userModal.style.display = 'initial'
+    setTimeout(() => {
+      userModal.style.opacity = '100%';
+      userModalHidden = 1
+    }, 10);
+
   } else if (userModalHidden == 1) {
-    userModal.style.display = 'none';
+    userModal.style.opacity = '0%';
     userModalHidden = 0
+    setTimeout(() => {
+      userModal.style.display = 'none'
+    }, 250);
   }
 })
 
 userModalCloseBtn.addEventListener('click', () => {
   if (userModalHidden == 0) {
-    userModal.style.display = 'initial';
-    userModalHidden = 1
+    userModal.style.display = 'initial'
+    setTimeout(() => {
+      userModal.style.opacity = '100%';
+      userModalHidden = 1
+    }, 10);
+
   } else if (userModalHidden == 1) {
-    userModal.style.display = 'none';
+    userModal.style.opacity = '0%';
     userModalHidden = 0
+    setTimeout(() => {
+      userModal.style.display = 'none'
+    }, 250);
   }
 })
 
@@ -145,3 +202,5 @@ signOutBtn.addEventListener("click", () => {
   ctnrUserRight.style.display = "none";
   ctnrUserLeft.style.display = "none";
 });
+
+// CHAT WINDOWS
