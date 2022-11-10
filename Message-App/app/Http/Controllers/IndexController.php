@@ -7,19 +7,19 @@ use Illuminate\Http\Request;
 use App\Models\Message;
 use App\Models\User;
 use App\Models\Conversation;
-
+use App\Models\ConversationParticipants;
 use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
     public function show()
     {   
-        $messages = Message::select()
-            ->with([
-                'conversation:*',
-                'user:*'
-            ])
-            ->get();
+        // $messages = Message::select()
+        //     ->with([
+        //         'conversation:*',
+        //         'user:*'
+        //     ])
+        //     ->get();
 
         $users = User::select()
             ->with([
@@ -28,15 +28,16 @@ class IndexController extends Controller
             ])
             ->get();
 
-        $conversation = Conversation::select()
+        $conversations = Conversation::select()
             ->with([
-                'participants:*'
+                'participants:*',
+                'message:*'
             ])
             ->get();
-
-        $data = ['messages' =>$messages, 
+            // 'messages' =>$messages, 
+        $data = [
                  'users' => $users,
-                 'conversation' => $conversation
+                 'conversations' => $conversations
                 ];
 
     
@@ -49,13 +50,31 @@ class IndexController extends Controller
         $id = $request->input('user');
         $conversationId = $request->input('conversation');
 
+        $conversationPartipants = ConversationParticipants::where('id', $conversationId);
+
+        $participantData = [
+            'user_id' => $id,
+            'conversation_id' => $conversationId
+        ];
+        if(ConversationParticipants::select()
+            ->where([
+                'user_id' => $id
+                ])
+            ->where([
+                'conversation_id' => $conversationId
+            ])
+            ->doesntExist()
+            )
+            {
+                $conversationPartipants->create($participantData);
+            }
         
         $data = [
             'content' => $content,
             'user_id' => $id,
             'conversation_id' => $conversationId
         ];
-        
+
         Message::create($data);
 
         return redirect('/');

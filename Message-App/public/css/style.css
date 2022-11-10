@@ -106,11 +106,25 @@ body {
     padding-top: 20px;
   }
   
-  .container-user-right {
+  .container-members {
+    background-color: rgb(247, 247, 247);
+    border: 1px solid rgb(197, 197, 197);
+  
+    width: 10%;
+    height: fit-content;
+    min-width: 135px;
+    margin-top: 64px;
+    padding-top: 20px;
+    display: none;
+  }
+  
+  .members-active {
+    display: block;
     padding-bottom: 10px;
     list-style: none;;
   }
 
+  
   .users_list {
     list-style: none;
     padding: 4px 0;
@@ -210,11 +224,11 @@ body {
   }
   
   .chat-selector:hover {
-    background-color: rgb(227, 227, 227);
+    background-color: rgb(221, 219, 219);
     cursor: pointer;
   }
   
-  .chatbar-active {
+  .chat-selector-active {
     background-color: rgb(168, 168, 168) !important;
     border: 0 !important;
     cursor: default !important;
@@ -314,11 +328,15 @@ body {
   }
   
   .message-form {
-    display: flex;
+    display: none;
     height: 4vh;
     width: 97%;
     margin: 0 auto;
     border: 1px solid rgb(197, 197, 197);
+  }
+
+  .form-active {
+    display: flex;
   }
 
   .message-send {

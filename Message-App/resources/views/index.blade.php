@@ -21,7 +21,7 @@
         <div class="user-name">
           <label class="user-label" for="name">Name:</label>
           <input type="text" name="name" id="name" value="{{ucwords(auth()->user()->name)}}">
-          <label class="user-label" for="chat_colour">Colour code:</label>
+          <label class="user-label" for="chat_colour">Chat colour:</label>
           <input class="colour-picker" type="color" name="chat_colour" id="chat_colour" value="{{auth()->user()->chat_colour}}" >
           <input type="submit" value="Save changes" class="user-submit">
         </div>
@@ -60,46 +60,119 @@
         <div class="user-details"></div>
         <div class="main-title">Web Messenger</div>
         <div class="chats-selectors">
-          <div class="chat-selector" onclick="localStorage.setItem('activeChat', 1), window.location.reload()">Chat 1</div>
-          <div class="chat-selector" onclick="localStorage.setItem('activeChat', 2), window.location.reload()">Chat 2</div>
-          <div class="chat-selector" onclick="localStorage.setItem('activeChat', 3), window.location.reload()">Chat 3</div>
-          <div class="chat-selector" onclick="localStorage.setItem('activeChat', 4), window.location.reload()">Chat 4</div>
+          <div class="chat-selector chat-selector1" onclick="localStorage.setItem('activeChat', 1), window.location.reload()">Chat 1</div>
+          <div class="chat-selector chat-selector2" onclick="localStorage.setItem('activeChat', 2), window.location.reload()">Chat 2</div>
+          <div class="chat-selector chat-selector3" onclick="localStorage.setItem('activeChat', 3), window.location.reload()">Chat 3</div>
+          <div class="chat-selector chat-selector4" onclick="localStorage.setItem('activeChat', 4), window.location.reload()">Chat 4</div>
         </div>
         <div class="chat-box">
           <div class="chat-window chat-window1">
             <div class="message-top">
-              @foreach ($messages as $message)
-                <div class="message-label-{{$message->user_id == Auth::id() ? 'one' : 'two'}}">{{$message->user_id == Auth::id() ? 'You' : ucwords(explode(' ', $message->user->name)[0])}}</div>
-                <div class="message-user-{{$message->user_id == Auth::id() ? 'one' : 'two'}}" style="{{'background-color:' . $message->user->chat_colour}}">{{$message->content}}</div>
+              @foreach ($conversations as $conversation)
+                @foreach ($conversation->message as $message)
+                    @if ($message->conversation_id == 1)
+                      <div class="message-label-{{$message->user_id == Auth::id() ? 'one' : 'two'}}">{{$message->user_id == Auth::id() ? 'You' : ucwords(explode(' ', $message->user->name)[0])}}</div>
+                      <div class="message-user-{{$message->user_id == Auth::id() ? 'one' : 'two'}}" style="{{'background-color:' . $message->user->chat_colour}}">{{$message->content}}</div>
+                    @endif
+                @endforeach
               @endforeach
             </div>
           </div>
           <div class="chat-window chat-window2">
-            <div class="message-top"></div>
+            <div class="message-top">
+              @foreach ($conversations as $conversation)
+              @foreach ($conversation->message as $message)
+                  @if ($message->conversation_id == 2)
+                    <div class="message-label-{{$message->user_id == Auth::id() ? 'one' : 'two'}}">{{$message->user_id == Auth::id() ? 'You' : ucwords(explode(' ', $message->user->name)[0])}}</div>
+                    <div class="message-user-{{$message->user_id == Auth::id() ? 'one' : 'two'}}" style="{{'background-color:' . $message->user->chat_colour}}">{{$message->content}}</div>
+                  @endif
+              @endforeach
+            @endforeach
+            </div>
           </div>
           <div class="chat-window chat-window3">
-            <div class="message-top"></div>
+            <div class="message-top">
+              @foreach ($conversations as $conversation)
+              @foreach ($conversation->message as $message)
+                  @if ($message->conversation_id == 3)
+                    <div class="message-label-{{$message->user_id == Auth::id() ? 'one' : 'two'}}">{{$message->user_id == Auth::id() ? 'You' : ucwords(explode(' ', $message->user->name)[0])}}</div>
+                    <div class="message-user-{{$message->user_id == Auth::id() ? 'one' : 'two'}}" style="{{'background-color:' . $message->user->chat_colour}}">{{$message->content}}</div>
+                  @endif
+              @endforeach
+            @endforeach
+            </div>
           </div>
           <div class="chat-window chat-window4">
-            <div class="message-top"></div>
+            <div class="message-top">
+              @foreach ($conversations as $conversation)
+              @foreach ($conversation->message as $message)
+                  @if ($message->conversation_id == 4)
+                    <div class="message-label-{{$message->user_id == Auth::id() ? 'one' : 'two'}}">{{$message->user_id == Auth::id() ? 'You' : ucwords(explode(' ', $message->user->name)[0])}}</div>
+                    <div class="message-user-{{$message->user_id == Auth::id() ? 'one' : 'two'}}" style="{{'background-color:' . $message->user->chat_colour}}">{{$message->content}}</div>
+                  @endif
+              @endforeach
+            @endforeach
+            </div>
           </div>
-          <form action="/send" method="post" class="message-form">
+          <form action="/send" method="post" class="message-form form1">
             @csrf
             <input  type="hidden" id="conversation" name="conversation" value="1">
             <input  type="hidden" id="user" name="user" value="{{auth()->user()->id}}">
             <input class="message-content" type="text" id="content" name="content" autofocus>
             <input type="submit" value="Submit" onkeypress="return checkSubmit(event">
           </form>
+          <form action="/send" method="post" class="message-form form2">
+            @csrf
+            <input  type="hidden" id="conversation" name="conversation" value="2">
+            <input  type="hidden" id="user" name="user" value="{{auth()->user()->id}}">
+            <input class="message-content" type="text" id="content" name="content" autofocus>
+            <input type="submit" value="Submit" onkeypress="return checkSubmit(event">
+          </form>
+          <form action="/send" method="post" class="message-form form3">
+            @csrf
+            <input  type="hidden" id="conversation" name="conversation" value="3">
+            <input  type="hidden" id="user" name="user" value="{{auth()->user()->id}}">
+            <input class="message-content" type="text" id="content" name="content" autofocus>
+            <input type="submit" value="Submit" onkeypress="return checkSubmit(event">
+          </form>
+          <form action="/send" method="post" class="message-form form4">
+            @csrf
+            <input  type="hidden" id="conversation" name="conversation" value="4">
+            <input  type="hidden" id="user" name="user" value="{{auth()->user()->id}}">
+            <input class="message-content" type="text" id="content" name="content" autofocus>
+            <input type="submit" value="Submit" onkeypress="return checkSubmit(event">
+          </form>
         </div>
       </div>
-      <div class="container-user container-user-right">
+      <div class="container-members members1">
         <div class="user-chat-info">Chat members</div>
         <ul>
-          <li>You</li>
-          @foreach (($conversation[0]->participants) as $participant)
-              @if ($participant->id !== auth()->user()->id)
-              <li>{{ucwords(explode(' ', $participant->name)[0])}}</li>
-              @endif
+          @foreach (($conversations[0]->participants) as $participant)
+                <li>{{ucwords(explode(' ', $participant->name)[0])}}</li>
+          @endforeach
+        </ul>
+        </div>
+      <div class="container-members members2">
+        <div class="user-chat-info">Chat members</div>
+        <ul>
+          @foreach (($conversations[1]->participants) as $participant)
+                <li>{{ucwords(explode(' ', $participant->name)[0])}}</li>
+          @endforeach
+        </ul>
+        </div>
+      <div class="container-members members3">
+        <div class="user-chat-info">Chat members</div>
+        <ul>
+          @foreach (($conversations[2]->participants) as $participant)
+                <li>{{ucwords(explode(' ', $participant->name)[0])}}</li>
+          @endforeach
+        </ul>
+        </div>
+      <div class="container-members members4">
+        <div class="user-chat-info">Chat members</div>
+        <ul>
+          @foreach (($conversations[3]->participants) as $participant)
+                <li>{{ucwords(explode(' ', $participant->name)[0])}}</li>
           @endforeach
         </ul>
         </div>

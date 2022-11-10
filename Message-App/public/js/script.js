@@ -54,6 +54,18 @@ const window1 = document.querySelector('.chat-window1');
 const window2 = document.querySelector('.chat-window2');
 const window3 = document.querySelector('.chat-window3');
 const window4 = document.querySelector('.chat-window4');
+const members1 = document.querySelector('.members1')
+const members2 = document.querySelector('.members2')
+const members3 = document.querySelector('.members3')
+const members4 = document.querySelector('.members4')
+const form1 = document.querySelector('.form1')
+const form2 = document.querySelector('.form2')
+const form3 = document.querySelector('.form3')
+const form4 = document.querySelector('.form4')
+const chatSelector1 = document.querySelector('.chat-selector1')
+const chatSelector2 = document.querySelector('.chat-selector2')
+const chatSelector3 = document.querySelector('.chat-selector3')
+const chatSelector4 = document.querySelector('.chat-selector4')
 
 console.log(localStorage.getItem('activeChat'));
 
@@ -92,6 +104,19 @@ switch (activeChatNum) {
     window2.classList.remove('chat-window-active')
     window3.classList.remove('chat-window-active')
     window4.classList.remove('chat-window-active')
+    members1.classList.add('members-active')
+    members2.classList.remove('members-active')
+    members3.classList.remove('members-active')
+    members4.classList.remove('members-active')
+    form1.classList.add('form-active')
+    form2.classList.remove('form-active')
+    form3.classList.remove('form-active')
+    form4.classList.remove('form-active')
+    chatSelector1.classList.add('chat-selector-active')
+    chatSelector2.classList.remove('chat-selector-active')
+    chatSelector3.classList.remove('chat-selector-active')
+    chatSelector4.classList.remove('chat-selector-active')
+
     break;
 
   case '2':
@@ -100,6 +125,18 @@ switch (activeChatNum) {
     window2.classList.add('chat-window-active')
     window3.classList.remove('chat-window-active')
     window4.classList.remove('chat-window-active')
+    members1.classList.remove('members-active')
+    members2.classList.add('members-active')
+    members3.classList.remove('members-active')
+    members4.classList.remove('members-active')
+    form1.classList.remove('form-active')
+    form2.classList.add('form-active')
+    form3.classList.remove('form-active')
+    form4.classList.remove('form-active')
+    chatSelector1.classList.remove('chat-selector-active')
+    chatSelector2.classList.add('chat-selector-active')
+    chatSelector3.classList.remove('chat-selector-active')
+    chatSelector4.classList.remove('chat-selector-active')
     break;
 
   case '3':
@@ -108,6 +145,18 @@ switch (activeChatNum) {
     window2.classList.remove('chat-window-active')
     window3.classList.add('chat-window-active')
     window4.classList.remove('chat-window-active')
+    members1.classList.remove('members-active')
+    members2.classList.remove('members-active')
+    members3.classList.add('members-active')
+    members4.classList.remove('members-active')
+    form1.classList.remove('form-active')
+    form2.classList.remove('form-active')
+    form3.classList.add('form-active')
+    form4.classList.remove('form-active')
+    chatSelector1.classList.remove('chat-selector-active')
+    chatSelector2.classList.remove('chat-selector-active')
+    chatSelector3.classList.add('chat-selector-active')
+    chatSelector4.classList.remove('chat-selector-active')
     break;
 
   case '4':
@@ -116,6 +165,18 @@ switch (activeChatNum) {
     window2.classList.remove('chat-window-active')
     window3.classList.remove('chat-window-active')
     window4.classList.add('chat-window-active')
+    members1.classList.remove('members-active')
+    members2.classList.remove('members-active')
+    members3.classList.remove('members-active')
+    members4.classList.add('members-active')
+    form1.classList.remove('form-active')
+    form2.classList.remove('form-active')
+    form3.classList.remove('form-active')
+    form4.classList.add('form-active')
+    chatSelector1.classList.remove('chat-selector-active')
+    chatSelector2.classList.remove('chat-selector-active')
+    chatSelector3.classList.remove('chat-selector-active')
+    chatSelector4.classList.add('chat-selector-active')
     break;
   default:
     console.log('default')
