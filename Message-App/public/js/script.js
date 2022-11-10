@@ -192,40 +192,49 @@ const ctnrUserLeft = document.querySelector(".container-user-left");
 const userImg = document.querySelector(".user-image");
 const editUserBtn = document.querySelector('.btn-editinfo');
 const userModal = document.querySelector('.user-modal');
+const userModalBackground = document.querySelector('.modal-background');
 const userModalCloseBtn = document.querySelector('.user-window-close');
 const containerLeft = document.querySelector('.container-user-left');
 
-let userModalHidden = 0;
+let userModalHidden = 1;
 editUserBtn.addEventListener('click', () => {
-  if (userModalHidden == 0) {
+  if (userModalHidden == 1) {
     userModal.style.display = 'initial'
+    userModalBackground.style.display = 'initial'
     setTimeout(() => {
       userModal.style.opacity = '100%';
-      userModalHidden = 1
+      userModalBackground.style.opacity = '100%';
+      userModalHidden = 0
     }, 10);
 
-  } else if (userModalHidden == 1) {
+  } else if (userModalHidden == 0) {
     userModal.style.opacity = '0%';
-    userModalHidden = 0
+    userModalBackground.style.opacity = '0%';
+    userModalHidden = 1
     setTimeout(() => {
-      userModal.style.display = 'none'
+      userModal.style.display = 'none';
+      userModalBackground.style.display = 'none'
     }, 250);
   }
 })
 
 userModalCloseBtn.addEventListener('click', () => {
-  if (userModalHidden == 0) {
+  if (userModalHidden == 1) {
     userModal.style.display = 'initial'
+    userModalBackground.style.display = 'initial'
     setTimeout(() => {
       userModal.style.opacity = '100%';
-      userModalHidden = 1
+      userModalBackground.style.opacity = '100%';
+      userModalHidden = 0
     }, 10);
 
-  } else if (userModalHidden == 1) {
+  } else if (userModalHidden == 0) {
     userModal.style.opacity = '0%';
-    userModalHidden = 0
+    userModalBackground.style.opacity = '0%';
+    userModalHidden = 1
     setTimeout(() => {
-      userModal.style.display = 'none'
+      userModal.style.display = 'none';
+      userModalBackground.style.display = 'none'
     }, 250);
   }
 })
@@ -237,7 +246,7 @@ containerLeft.addEventListener('mouseover', () => {
 containerLeft.addEventListener('mouseleave', () => {
   setTimeout(() => {
     containerLeft.style.transform = 'translateX(80%)';
-  }, 300);
+  }, 100);
 })
 
 // SIGN OUT

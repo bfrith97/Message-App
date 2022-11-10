@@ -75,6 +75,10 @@ class IndexController extends Controller
             'conversation_id' => $conversationId
         ];
 
+        if ($data['content'] == null)
+            {
+                return redirect('/');
+            }
         Message::create($data);
 
         return redirect('/');
@@ -84,6 +88,9 @@ class IndexController extends Controller
     {
         $chat = Message::select();
         $chat->delete();
+
+        $conversationPartipants = ConversationParticipants::select();
+        $conversationPartipants->delete();
 
         return redirect('/');
     }
