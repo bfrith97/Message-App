@@ -36,7 +36,7 @@ body {
     top: 45%;
     transform: translate(-50%, -50%);
     height: fit-content;
-    width: 30%;
+    width: fit-content;
     z-index: 3;
     border-radius: 20px;
     box-shadow: 1px 0px 10px 2px rgba(0, 0, 0, 0.336);
@@ -99,9 +99,8 @@ body {
     background-color: rgb(247, 247, 247);
     border: 1px solid rgb(197, 197, 197);
   
-    width: 10%;
+    width: 202px;
     height: fit-content;
-    min-width: 135px;
     margin-top: 64px;
     padding-top: 20px;
   }
@@ -135,7 +134,7 @@ body {
     flex-direction: row;
     transform: translateX(80%);
     box-shadow: 0px;
-    transition: transform 1s;
+    transition: transform 0.7s;
     z-index: 1;
 
     border-radius: 8px 0 0 8px;
@@ -152,7 +151,7 @@ body {
   .user-hint {
     width: 1px;
     height: 1px;
-    margin-left: 8px;
+    margin-left: 15px;
     opacity: 25%;
   }
   
@@ -173,7 +172,7 @@ body {
   }
   
   .btn-user {
-    margin: 5px auto;
+    margin-bottom: 5px;
     padding: 5px;
     border: none;
     border: 1px solid rgb(197, 197, 197);
@@ -184,24 +183,21 @@ body {
   .btn-user:hover {
     background-color: rgb(230, 230, 230);
   }
-  
-  .btn-user:last-child {
-    margin-bottom: 20px;
+
+  .btn-clearconversations {
+    margin-bottom: 15px;
   }
+    
   
-  .user-partner-name {
-    text-align: left;
-    margin: auto 0;
-    transform: translateY(-5px);
-  }
-  
-  .btn-clearchat {
-    margin-top: 15px;
-  }
+
   
   /* 
   MESSAGES
   */
+  .selectors-bar {
+    display: flex;
+  }
+
   .chats-selectors {
     display: flex;
     background-color: rgb(247, 247, 247);
@@ -210,14 +206,19 @@ body {
     min-width: 500px;
     border-top: 1px solid rgb(146, 146, 146);
     border-bottom: 1px solid rgb(146, 146, 146);
+    border-right: 1px solid rgb(146, 146, 146);
     padding: 10px;
+    overflow-y: auto;
   }
   
   .chat-selector {
+    /* min-width: 100px; */
+    width: fit-content;
     text-align: left;
     font-size: 20px;
     margin: -5px;
     padding: 2px 20px;
+    white-space: nowrap;
     background-color: rgb(230, 230, 230);
     flex: 1;
     border: 1px solid rgb(197, 197, 197);
@@ -237,6 +238,26 @@ body {
     padding: 2px 45px;
   
     z-index: 1;
+  }
+
+  .new-chat {
+    background-color: rgb(247, 247, 247);
+    border-top: 1px solid rgb(146, 146, 146);;
+    border-bottom: 1px solid rgb(146, 146, 146);;
+  }
+
+  .new-chat-btn {
+    margin: 30% 5px 0 5px;
+    border: 1px solid rgb(197, 197, 197);
+    background-color: rgb(230, 230, 230);
+    width: 20px;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .new-chat-btn:hover {
+    background-color: rgb(221, 219, 219);
+    cursor: pointer;
   }
   
   /*
@@ -356,4 +377,53 @@ body {
     border: 0;
     border-left:1px solid rgb(197, 197, 197);
   }
+
+  .chat-list-window {
+    border: 1px solid black;
+    width: 50%;
+    margin: auto;
+    background-color: rgba(203, 230, 253, 0.932);
+    position: fixed;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+    height: fit-content;
+    width: fit-content;
+    z-index: 3;
+    border-radius: 20px;
+    box-shadow: 1px 0px 10px 2px rgba(0, 0, 0, 0.336);
+    min-width: 250px;
+    display: none;
+    transition: opacity 0.2s;
+  }
+
+  .list-title {
+    text-align: center;
+    font-size: 25px;
+    margin-top: 5%;
+  }
   
+  .list-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .grid-key {
+    width: 100px;
+    overflow-wrap:break-word;
+    margin: 0;
+  }
+
+  .grid-row {
+    display: flex;
+    margin: 15px 30px;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+  }
+
+  .list-window-close {
+    margin: 10px auto 20px;
+  }

@@ -11,49 +11,23 @@ const chatActive = document.querySelector(".chatbar-active");
 const chatWindowActive = document.querySelector(".chat-window-active");
 const chatSlctrs = document.querySelector(".chats-selectors");
 
-const initialise = function (user) {
-  currentUser = user;
-  modalBkgrnd.style.display = "none";
-  lgnModal.style.display = "none";
 
-  ctnrUserRight.style.display = "grid";
-  ctnrUserLeft.style.display = "flex";
 
-  chatFirst.classList.add("chatbar-active");
-  msgTop.style.display = "initial";
-  msgContainer.style.display = "flex";
-  chatSlctrs.style.display = "flex";
 
-  msgContent.style.display = "initial";
-
-  btnSend.style.display = "initial";
-};
-
-buttons.forEach((button) => {
-  button.addEventListener("click", () => {
-    if (button.classList.contains("login-button-one")) {
-      initialise(1);
-    }
-    if (button.classList.contains("login-button-two")) {
-      initialise(2);
-    }
-  });
-});
 
 // CHAT
 
 const msgCreate = document.createElement("div");
-// const msgTop = document.querySelector(".message-top");
 const msg = document.querySelectorAll(".message");
 const msgContainer = document.querySelector(".message-write");
 const msgContent = document.querySelector(".message-content");
 const chatWindow = document.querySelectorAll(".chat-window");
 const btnSend = document.querySelector(".message-send");
 const clearChat = document.querySelector(".btn-clearchat");
-const window1 = document.querySelector('.chat-window1');
-const window2 = document.querySelector('.chat-window2');
-const window3 = document.querySelector('.chat-window3');
-const window4 = document.querySelector('.chat-window4');
+const window1 = document.querySelector('.chat-window1') ?? 'hello1';
+const window2 = document.querySelector('.chat-window2') ?? 'hello2';
+const window3 = document.querySelector('.chat-window3') ?? 'hello3';
+const window4 = document.querySelector('.chat-window4') ?? 'hello4';
 const members1 = document.querySelector('.members1')
 const members2 = document.querySelector('.members2')
 const members3 = document.querySelector('.members3')
@@ -82,23 +56,33 @@ chat.forEach((msgTop) => {
         element.classList.remove("chatbar-active");
       });
       msgTop.classList.add("chatbar-active");
-      
     }
-
-
   });
 });
 
-const activeChatNum = localStorage.getItem('activeChat');
+const totalChats = chat.length
+localStorage.setItem('totalChats', totalChats)
+totalChatsLocalStorage = parseInt(localStorage.getItem('totalChats'));
 
-chat.forEach((singleChat) => {
-  singleChat.addEventListener('click', () => {
- 
+const newChatBtn = document.querySelector('.new-chat-btn')
+
+newChatBtn.addEventListener('click', () => {
+  localStorage.setItem('totalChats', totalChatsLocalStorage + 1)
+})
+console.log(localStorage.getItem('totalChats'));
+
+const activeChatNum = 'chat-window' + localStorage.getItem('activeChat');
+const activeChatAmt =  5
+const windows = document.querySelectorAll('.chat-window')
+
+chat.forEach(eachChat => {
+  eachChat.addEventListener('click', () => {
+
   })
 })
 
 switch (activeChatNum) {
-  case '1':
+  case 'chat-window1':
     console.log('one')
     window1.classList.add('chat-window-active')
     window2.classList.remove('chat-window-active')
@@ -119,7 +103,7 @@ switch (activeChatNum) {
 
     break;
 
-  case '2':
+  case 'chat-window2':
     console.log('two')
     window1.classList.remove('chat-window-active')
     window2.classList.add('chat-window-active')
@@ -139,7 +123,7 @@ switch (activeChatNum) {
     chatSelector4.classList.remove('chat-selector-active')
     break;
 
-  case '3':
+  case 'chat-window3':
     console.log('three')
     window1.classList.remove('chat-window-active')
     window2.classList.remove('chat-window-active')
@@ -159,9 +143,9 @@ switch (activeChatNum) {
     chatSelector4.classList.remove('chat-selector-active')
     break;
 
-  case '4':
+  case 'chat-window4':
     console.log('four')
-    window1.classList.remove('chat-window-active')
+    window1.classList.remove('chat-window-active') 
     window2.classList.remove('chat-window-active')
     window3.classList.remove('chat-window-active')
     window4.classList.add('chat-window-active')
@@ -178,21 +162,66 @@ switch (activeChatNum) {
     chatSelector3.classList.remove('chat-selector-active')
     chatSelector4.classList.add('chat-selector-active')
     break;
-  default:
-    console.log('default')
-    break;
 }
+
+const chatListWindow = document.querySelector('.chat-list-window')
+const chatListBtn = document.querySelector('.btn-chatlist')
+const chatListCloseBtn = document.querySelector('.list-window-close')
+const userModalBackground = document.querySelector('.modal-background');
+
+let chatListHidden = 1;
+
+chatListBtn.addEventListener('click', () => {
+  if (chatListHidden == 1) {
+    chatListWindow.style.display = 'initial'
+    userModalBackground.style.display = 'initial'
+    setTimeout(() => {
+      chatListWindow.style.opacity = '100%';
+      userModalBackground.style.opacity = '100%';
+      chatListHidden = 0
+    }, 10);
+    
+  } else if (chatListHidden == 0) {
+    chatListWindow.style.opacity = '0%';
+    userModalBackground.style.opacity = '0%';
+    chatListHidden = 1
+    setTimeout(() => {
+      chatListWindow.style.display = 'none';
+      userModalBackground.style.display = 'none'
+    }, 250);
+  }
+})
+
+chatListCloseBtn.addEventListener('click', () => {
+  if (chatListHidden == 1) {
+    chatListWindow.style.display = 'initial'
+    userModalBackground.style.display = 'initial'
+    setTimeout(() => {
+      chatListWindow.style.opacity = '100%';
+      userModalBackground.style.opacity = '100%';
+      chatListHidden = 0
+    }, 10);
+    
+  } else if (chatListHidden == 0) {
+    chatListWindow.style.opacity = '0%';
+    userModalBackground.style.opacity = '0%';
+    chatListHidden = 1
+    setTimeout(() => {
+      chatListWindow.style.display = 'none';
+      userModalBackground.style.display = 'none'
+    }, 250);
+  }
+})
+
 
 // USERS
 
+const userModal = document.querySelector('.user-modal');
 const signOutBtn = document.querySelector(".btn-signout");
-// const ctnrUser = document.querySelectorAll(".container-user");
 const ctnrUserRight = document.querySelector(".container-user-right");
 const ctnrUserLeft = document.querySelector(".container-user-left");
 const userImg = document.querySelector(".user-image");
 const editUserBtn = document.querySelector('.btn-editinfo');
-const userModal = document.querySelector('.user-modal');
-const userModalBackground = document.querySelector('.modal-background');
 const userModalCloseBtn = document.querySelector('.user-window-close');
 const containerLeft = document.querySelector('.container-user-left');
 
@@ -237,6 +266,16 @@ userModalCloseBtn.addEventListener('click', () => {
       userModalBackground.style.display = 'none'
     }, 250);
   }
+})
+
+userModalBackground.addEventListener('click', () => {
+  userModal.style.opacity = '0%';
+  userModalBackground.style.opacity = '0%';
+  userModalHidden = 1
+  setTimeout(() => {
+    userModal.style.display = 'none';
+    userModalBackground.style.display = 'none'
+  }, 250);
 })
 
 containerLeft.addEventListener('mouseover', () => {

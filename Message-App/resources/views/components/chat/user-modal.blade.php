@@ -9,7 +9,7 @@
         <label class="user-label" for="chat_colour">Chat colour:</label>
         <input class="colour-picker" type="color" name="chat_colour" id="chat_colour" value="{{auth()->user()->chat_colour}}" >
         <input type="submit" value="Save changes" class="user-submit">
+        <button type="button" class="user-window-close">Close window</button>
       </div>
-      <button type="button" class="user-window-close">Close window</button>
     </form>
   </div>

@@ -2,49 +2,59 @@
 
     <x-chat.user-modal/>
     <div class="container-parent">
-      <div class="container-user container-user-left">
-        <x-chat.hint-left />
-        <div class="user-buttons">
-          
-          <div class="user-welcome-txt">Welcome,</div>
-          <div class="user-welcome-txt">{{ucwords(explode(' ', auth()->user()->name)[0])}}!</div>
-          <form action="/logout" method="post">
-            @csrf
-            <input class="btn-user btn-signout" type="submit" value="Log out">
-          </form>
-          <button class="btn-user btn-editinfo">Edit User</button>
-          <a href="/clear">
-            <button class="btn-user btn-clearchat" onclick="return confirm('Are you sure you want to delete the chat contents for everyone?')">Clear Chat</button>
-          </a>
-        </div>
-      </div>
+      <x-chat.container-left/>
 
       <div class="container-chat">
         <div class="user-details"></div>
+
         <div class="main-title">Web Messenger</div>
-        <div class="chats-selectors">
-          <div class="chat-selector chat-selector1" onclick="localStorage.setItem('activeChat', 1), window.location.reload()">Chat 1</div>
-          <div class="chat-selector chat-selector2" onclick="localStorage.setItem('activeChat', 2), window.location.reload()">Chat 2</div>
-          <div class="chat-selector chat-selector3" onclick="localStorage.setItem('activeChat', 3), window.location.reload()">Chat 3</div>
-          <div class="chat-selector chat-selector4" onclick="localStorage.setItem('activeChat', 4), window.location.reload()">Chat 4</div>
-        </div>
+        <div class="selectors-bar">
+          <div class="chats-selectors">
+            @foreach ($conversations as $conversation)
+            <x-chat.chat-selector :window="$conversation"/>
+              @endforeach
+            </div>
+            
+            <form class="new-chat" action="new-chat" method="POST">
+              @csrf
+              <input class="new-chat-btn" type="submit" value="+">
+            </form>
+          </div>
+        
         <div class="chat-box">
-          <x-chat.window :conversations="$conversations" :window="1"/>
-          <x-chat.window :conversations="$conversations" :window="2"/>
-          <x-chat.window :conversations="$conversations" :window="3"/>
-          <x-chat.window :conversations="$conversations" :window="4"/>
-          
-          <x-chat.message-form :window="1"/>
-          <x-chat.message-form :window="2"/>
-          <x-chat.message-form :window="3"/>
-          <x-chat.message-form :window="4"/>
+          @foreach ($conversations as $conversation)
+            <x-chat.window :conversations="$conversations" :window="$conversation->id"/>
+            <x-chat.message-form :window="$conversation->id"/>
+          @endforeach
         </div>
-      </div>
-      <x-chat.chat-members :conversations="$conversations" :arrayNum="0" :window="1"/>
-      <x-chat.chat-members :conversations="$conversations" :arrayNum="1" :window="2"/>
-      <x-chat.chat-members :conversations="$conversations" :arrayNum="2" :window="3"/>
-      <x-chat.chat-members :conversations="$conversations" :arrayNum="3" :window="4"/>
 
       </div>
+      @foreach ($conversations as $conversation)
+        <x-chat.chat-members :conversations="$conversations" :array="$conversation->id - 1" :window="$conversation->id"/>
+      @endforeach
 
+    </div>
+    <div class="modal-background"></div>
+    <div class="chat-list-window">
+        <div class="list-title">Chat list:</div>
+          <div class="list-grid">
+            @foreach ($conversations as $conversation)
+            <div class="grid-row">
+              <h3 class="grid-key">{{$conversation->name}}</h3>
+              <div class="chat-list-item"></div>
+              <ul>
+                <u>Chat members</u>
+                @foreach ($conversation->participants as $participant)
+                <li>{{$participant->name}} </li>
+                @endforeach
+              </ul>
+              <ul>
+                <u>Total Messages</u>
+                <li>{{$conversation->message->count()}}</li>
+              </ul>
+            </div>
+              @endforeach
+              <button type="button" class="list-window-close">Close window</button>
+          </div>
+      </div>
 <x-footer />

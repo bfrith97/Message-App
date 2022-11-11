@@ -6,3 +6,5 @@
 ### Admin panel which allows admin to change colours and names of all users
 
 ### Maybe add images to users and ability to change them
+
+### Redo login and register page
