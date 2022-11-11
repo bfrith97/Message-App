@@ -44,4 +44,16 @@ class ConversationController extends Controller
 
         return redirect('/');
     }
+
+    public function update(Request $request)
+    {
+        $data = [
+            'name' => $request->input('name'),
+        ];
+        $conversation = Conversation::where('id', $request->input('id'));
+
+        $conversation->update($data);
+
+        return redirect('/');
+    }
 }

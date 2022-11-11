@@ -272,8 +272,13 @@ userModalBackground.addEventListener('click', () => {
   userModal.style.opacity = '0%';
   userModalBackground.style.opacity = '0%';
   userModalHidden = 1
+  chatListWindow.style.opacity = '0%';
+  userModalBackground.style.opacity = '0%';
+  chatListHidden = 1
   setTimeout(() => {
     userModal.style.display = 'none';
+    userModalBackground.style.display = 'none'
+    chatListWindow.style.display = 'none';
     userModalBackground.style.display = 'none'
   }, 250);
 })

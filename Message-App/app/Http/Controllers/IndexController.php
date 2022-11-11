@@ -28,12 +28,22 @@ class IndexController extends Controller
             ])
             ->get();
 
+        $messages = Message::select()
+            ->with([
+                'user:*',
+            ])
+            ->get();
+
+        // dd($messages);
+
         $data = [
                  'users' => $users,
-                 'conversations' => $conversations
+                 'conversations' => $conversations,
+                 'currentUser' => auth()->user()->id,
+                 'messages' => $messages
                 ];
-
     
+        // dd(auth()->user()->id);
         return view('index', $data);
     }
 }

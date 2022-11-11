@@ -15,8 +15,8 @@
       <a href="/clear-messages">
         <button class="btn-user btn-clearchat" onclick="return confirm('Are you sure you want to delete the chat contents for everyone?')">Clear Messages</button>
       </a>
-      <a href="/clear-conversations">
+      {{-- <a href="/clear-conversations">
         <button class="btn-user btn-clearconversations" onclick="return confirm('Are you sure you want to delete all conversations for everyone?')">Clear Chats</button>
-      </a>
+      </a> --}}
     </div>
   </div>

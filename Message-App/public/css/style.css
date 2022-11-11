@@ -114,12 +114,14 @@ body {
     min-width: 135px;
     margin-top: 64px;
     padding-top: 20px;
+
     display: none;
   }
   
   .members-active {
     display: block;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
+    padding-right: 5px;
     list-style: none;;
   }
 
@@ -158,7 +160,7 @@ body {
   .user-chat-info {
     grid-column: 1 / -1;
     text-align: center;
-    margin-bottom: 15px;
+    /* margin-bottom: 15px; */
   }
   
   .container-user:last-child {
@@ -379,7 +381,6 @@ body {
   }
 
   .chat-list-window {
-    border: 1px solid black;
     width: 50%;
     margin: auto;
     background-color: rgba(203, 230, 253, 0.932);
@@ -411,7 +412,7 @@ body {
   .grid-key {
     width: 100px;
     overflow-wrap:break-word;
-    margin: 0;
+    margin: 0 50px 0 0;
   }
 
   .grid-row {
@@ -422,8 +423,36 @@ body {
   ul {
     list-style: none;
     margin: 0;
+    padding: 0 0 0 12px;
+  }
+
+
+  .chat-members-title {
+    padding: 0;
+    margin: 0;
   }
 
   .list-window-close {
     margin: 10px auto 20px;
+  }
+
+  .chat-active {
+    display: initial;
+  }
+
+  .chat-inactive {
+    display: none;
+  }
+
+  .submit-chat-btn {
+    margin-left: 25px;
+  }
+
+  .no-one-warning {
+    margin: 0 0 0 0;
+    white-space: nowrap;
+  }
+
+  h4 {
+    margin: 0 0 20px 0
   }
