@@ -75,7 +75,6 @@ body {
     display: flex;
     flex-direction: column;
     background-color: aliceblue;
-    width: -content;
     margin: 0;
     outline: 1px solid rgb(146, 146, 146);
     box-shadow: 1px 1px 1px 1px;
@@ -381,7 +380,7 @@ body {
   }
 
   .chat-list-window {
-    width: 50%;
+    width: 80%;
     margin: auto;
     background-color: rgba(203, 230, 253, 0.932);
     position: fixed;
@@ -417,7 +416,9 @@ body {
 
   .grid-row {
     display: flex;
-    margin: 15px 30px;
+    margin: 0 30px;
+    padding: 30px;
+    border-bottom: 1px solid rgb(197, 197, 197)
   }
 
   ul {
@@ -455,4 +456,63 @@ body {
 
   h4 {
     margin: 0 0 20px 0
+  }
+
+  a {
+    text-decoration: none;
+    color: initial;
+    width: 10px;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+/*
+USER
+*/
+  .user-parent {
+    display: flex;
+    flex-direction: column;
+    /* background-color: red; */
+    height: fit-content;
+    justify-content: center;
+    margin-top: 10vh;
+  }
+
+  .user-box {
+    display: flex;
+    flex-direction: column;
+
+    background-color: rgb(247, 247, 247);
+    height: 70vh;
+    width: 50vw;
+
+    padding-top: 20px;
+
+    border-radius: 8px 8px 0 0;
+    align-self: center;
+    justify-self: center;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .user-image {
+    border-radius: 10px;
+    width: 200px;
+    height: 200px
+  }
+
+  .user-information-object {
+    border-top: 1px solid rgb(173, 215, 252);
+    padding-top: 10px
+  }
+
+  .user-information-bio {
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(173, 215, 252);
+  }
+
+  .user-exit-btn {
+    width: fit-content;
   }

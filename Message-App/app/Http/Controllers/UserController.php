@@ -18,11 +18,20 @@ class UserController extends Controller
             'name' => $request->input('name'),
             'chat_colour' => $request->input('chat_colour')
         ];
-        // dd($request->input('chat_colour'));
+
         $user = User::where('id', auth()->user()->id);
 
         $user->update($data);
 
         return redirect('/');
+    }
+
+    public function show($id) {
+        $user = User::where('id', $id)->get();
+        $data = [
+            'user' => $user[0]
+        ];
+
+        return view('user', $data);
     }
 }

@@ -19,6 +19,8 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
+Route::get('/users/{id}', [\App\Http\Controllers\UserController::class, 'show']);
+
 Route::get('/', [\App\Http\Controllers\IndexController::class, 'show'])->middleware(['auth', 'verified']);
 Route::get('/clear-messages', [\App\Http\Controllers\MessageController::class, 'destroy']);
 Route::get('/clear-conversations', [\App\Http\Controllers\ConversationController::class, 'destroy']);
@@ -26,6 +28,5 @@ Route::get('/clear-conversations', [\App\Http\Controllers\ConversationController
 Route::post('/send', [\App\Http\Controllers\MessageController::class, 'store']);
 Route::post('/update-user', [\App\Http\Controllers\UserController::class, 'update']);
 Route::post('/update-chat', [\App\Http\Controllers\ConversationController::class, 'update']);
-
 
 Route::post('/new-chat', [\App\Http\Controllers\ConversationController::class, 'store']);

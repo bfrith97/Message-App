@@ -13,13 +13,13 @@
         </h3>
           <div class="chat-list-item"></div>
           <ul>
-            <u>Chat members</u>
+            <u><strong>Chat members</strong></u>
             @foreach ($conversation->participants as $participant)
-              <li>{{explode(' ', $participant->name)[0]}} - ({{$messages->where('user_id', $participant->id)->where('conversation_id', $conversation->id)->count()}})</li>
+              <li><a href="users/{{$participant->id}}">{{explode(' ', $participant->name)[0]}}</a> - ({{$messages->where('user_id', $participant->id)->where('conversation_id', $conversation->id)->count()}})</li>
             @endforeach
           </ul>
           <ul>
-            <u>Total Messages</u>
+            <u><strong>Total Messages</strong></u>
             <li>{{$conversation->message->count()}}</li>
           </ul>
         </div>

@@ -7,7 +7,7 @@
     <ul>
       @if ($conversations[$array]->participants->count() > 0)
         @foreach (($conversations[$array]->participants) as $participant)
-              <li>{{ucwords(explode(' ', $participant->name)[0])}} - ({{$messages->where('user_id', $participant->id)->where('conversation_id', $conversations[$array]->id)->count()}})</li>
+              <li><a href="users/{{$participant->id}}">{{ucwords(explode(' ', $participant->name)[0])}}</a> - ({{$messages->where('user_id', $participant->id)->where('conversation_id', $conversations[$array]->id)->count()}})</li>
         @endforeach
       @else
         <p class="no-one-warning">No one is here :(</p>
