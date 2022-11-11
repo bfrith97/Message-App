@@ -16,6 +16,7 @@ class UserController extends Controller
     {
         $data = [
             'name' => $request->input('name'),
+            'bio' => $request->input('bio'),
             'chat_colour' => $request->input('chat_colour')
         ];
 
