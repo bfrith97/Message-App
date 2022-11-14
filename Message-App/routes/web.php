@@ -29,4 +29,5 @@ Route::post('/send', [\App\Http\Controllers\MessageController::class, 'store']);
 Route::post('/update-user', [\App\Http\Controllers\UserController::class, 'update']);
 Route::post('/update-chat', [\App\Http\Controllers\ConversationController::class, 'update']);
 
-Route::post('/new-chat', [\App\Http\Controllers\ConversationController::class, 'store']);
+Route::post('/join-chat', [\App\Http\Controllers\ConversationParticipantController::class, 'store']);
+Route::post('/close-chat', [\App\Http\Controllers\ConversationParticipantController::class, 'destroy']);

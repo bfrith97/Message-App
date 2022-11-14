@@ -28,22 +28,22 @@ class IndexController extends Controller
             ])
             ->get();
 
+        $activeConversations = Conversation::whereRelation('participants', 'user_id', '=', auth()->user()->id)->get();
+
         $messages = Message::select()
             ->with([
                 'user:*',
             ])
             ->get();
 
-        // dd($messages);
-
         $data = [
                  'users' => $users,
                  'conversations' => $conversations,
+                 'activeConversations' => $activeConversations,
                  'currentUser' => auth()->user()->id,
                  'messages' => $messages
                 ];
     
-        // dd(auth()->user()->id);
         return view('index', $data);
     }
 }

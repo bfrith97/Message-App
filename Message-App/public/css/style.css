@@ -214,12 +214,14 @@ body {
   }
   
   .chat-selector {
-    /* min-width: 100px; */
+    display: flex;
+    justify-content: space-between;
+
     width: fit-content;
     text-align: left;
     font-size: 20px;
-    margin: -5px;
-    padding: 2px 20px;
+    margin: -5px 0;
+    padding: 2px 5px;
     white-space: nowrap;
     background-color: rgb(230, 230, 230);
     flex: 1;
@@ -240,6 +242,17 @@ body {
     padding: 2px 45px;
   
     z-index: 1;
+  }
+
+  .chat-selector-cross {
+    text-align: center;
+    width: 20px;
+    opacity: 30%;
+    display: none;
+  }
+
+  .chat-selector-cross:hover {
+    opacity: 60%;
   }
 
   .new-chat {

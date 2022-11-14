@@ -11,14 +11,8 @@
         <div class="selectors-bar">
           <div class="chats-selectors">
             
-            {{-- {{dd($users[2])}} --}}
-            @foreach ($conversations as $conversation)
-                {{-- @foreach ($users[$currentUser]->conversations as $userConversation)
-                  @if ($conversation->id == $userConversation->id) --}}
+              @foreach ($activeConversations as $conversation)
                     <x-chat.chat-selector :window="$conversation" :active="'active'"/>
-                  {{-- @else
-                  @endif
-                @endforeach --}}
               @endforeach
             </div>
             
@@ -42,6 +36,5 @@
 
     </div>
     <div class="modal-background"></div>
-    {{-- {{dd($messages)}} --}}
     <x-chat.chat-list :conversations="$conversations" :messages="$messages"/>
 <x-footer />

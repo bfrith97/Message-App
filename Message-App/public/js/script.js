@@ -41,7 +41,7 @@ const chatSelector2 = document.querySelector('.chat-selector2')
 const chatSelector3 = document.querySelector('.chat-selector3')
 const chatSelector4 = document.querySelector('.chat-selector4')
 
-console.log(localStorage.getItem('activeChat'));
+console.log('Active chat: ' + localStorage.getItem('activeChat'));
 
 function checkSubmit(e) {
   if(e && e.keyCode == 13) {
@@ -64,12 +64,7 @@ const totalChats = chat.length
 localStorage.setItem('totalChats', totalChats)
 totalChatsLocalStorage = parseInt(localStorage.getItem('totalChats'));
 
-const newChatBtn = document.querySelector('.new-chat-btn')
 
-newChatBtn.addEventListener('click', () => {
-  localStorage.setItem('totalChats', totalChatsLocalStorage + 1)
-})
-console.log(localStorage.getItem('totalChats'));
 
 const activeChatNum = 'chat-window' + localStorage.getItem('activeChat');
 const activeChatAmt =  5
@@ -96,10 +91,10 @@ switch (activeChatNum) {
     form2.classList.remove('form-active')
     form3.classList.remove('form-active')
     form4.classList.remove('form-active')
-    chatSelector1.classList.add('chat-selector-active')
-    chatSelector2.classList.remove('chat-selector-active')
-    chatSelector3.classList.remove('chat-selector-active')
-    chatSelector4.classList.remove('chat-selector-active')
+    // chatSelector1.classList.add('chat-selector-active')
+    // chatSelector2.classList.remove('chat-selector-active')
+    // chatSelector3.classList.remove('chat-selector-active')
+    // chatSelector4.classList.remove('chat-selector-active')
 
     break;
 
@@ -117,10 +112,10 @@ switch (activeChatNum) {
     form2.classList.add('form-active')
     form3.classList.remove('form-active')
     form4.classList.remove('form-active')
-    chatSelector1.classList.remove('chat-selector-active')
-    chatSelector2.classList.add('chat-selector-active')
-    chatSelector3.classList.remove('chat-selector-active')
-    chatSelector4.classList.remove('chat-selector-active')
+    // chatSelector1.classList.remove('chat-selector-active')
+    // chatSelector2.classList.add('chat-selector-active')
+    // chatSelector3.classList.remove('chat-selector-active')
+    // chatSelector4.classList.remove('chat-selector-active')
     break;
 
   case 'chat-window3':
@@ -137,10 +132,10 @@ switch (activeChatNum) {
     form2.classList.remove('form-active')
     form3.classList.add('form-active')
     form4.classList.remove('form-active')
-    chatSelector1.classList.remove('chat-selector-active')
-    chatSelector2.classList.remove('chat-selector-active')
-    chatSelector3.classList.add('chat-selector-active')
-    chatSelector4.classList.remove('chat-selector-active')
+    // chatSelector1.classList.remove('chat-selector-active')
+    // chatSelector2.classList.remove('chat-selector-active')
+    // chatSelector3.classList.add('chat-selector-active')
+    // chatSelector4.classList.remove('chat-selector-active')
     break;
 
   case 'chat-window4':
@@ -157,19 +152,61 @@ switch (activeChatNum) {
     form2.classList.remove('form-active')
     form3.classList.remove('form-active')
     form4.classList.add('form-active')
-    chatSelector1.classList.remove('chat-selector-active')
-    chatSelector2.classList.remove('chat-selector-active')
-    chatSelector3.classList.remove('chat-selector-active')
-    chatSelector4.classList.add('chat-selector-active')
+    // chatSelector1.classList.remove('chat-selector-active')
+    // chatSelector2.classList.remove('chat-selector-active')
+    // chatSelector3.classList.remove('chat-selector-active')
+    // chatSelector4.classList.add('chat-selector-active')
     break;
 }
+
+const chatSelectorCrosses = document.querySelectorAll('.chat-selector-cross');
+
+chat.forEach(selector => {
+  selector.addEventListener('mouseover', () => {
+    chatSelectorCrosses.forEach(cross => {
+      cross.style.display = 'block'
+    });
+  })
+});
+
+chat.forEach(selector => {
+  selector.addEventListener('mouseout', () => {
+    chatSelectorCrosses.forEach(cross => {
+      cross.style.display = 'none'
+    });
+  })
+});
 
 const chatListWindow = document.querySelector('.chat-list-window')
 const chatListBtn = document.querySelector('.btn-chatlist')
 const chatListCloseBtn = document.querySelector('.list-window-close')
 const userModalBackground = document.querySelector('.modal-background');
+const newChatBtn = document.querySelector('.new-chat-btn')
 
 let chatListHidden = 1;
+
+newChatBtn.addEventListener('click', () => {
+  if (chatListHidden == 1) {
+    chatListWindow.style.display = 'initial'
+    userModalBackground.style.display = 'initial'
+    setTimeout(() => {
+      chatListWindow.style.opacity = '100%';
+      userModalBackground.style.opacity = '100%';
+      chatListHidden = 0
+    }, 10);
+    
+  } else if (chatListHidden == 0) {
+    chatListWindow.style.opacity = '0%';
+    userModalBackground.style.opacity = '0%';
+    chatListHidden = 1
+    setTimeout(() => {
+      chatListWindow.style.display = 'none';
+      userModalBackground.style.display = 'none'
+    }, 250);
+  }
+})
+
+
 
 chatListBtn.addEventListener('click', () => {
   if (chatListHidden == 1) {
