@@ -10,6 +10,15 @@
             <br>
             <p class="user-information-bio">{{$user->bio}}</p>
         </div>
+        
+        @if ($user->id != auth()->user()->id) 
+            <form action="/block-user" method="post">
+                @csrf
+                <input type="hidden" name="targetuser" id="targetuser" value="{{$user->id}}">
+                <input type="hidden" name="user" id="user" value={{auth()->user()->id}}>
+                <input class="block-btn" type="submit" value="Block user">
+            </form>
+        @endif
     </div>
 </div>
 <x-footer />

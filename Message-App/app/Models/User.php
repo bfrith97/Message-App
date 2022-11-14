@@ -29,15 +29,15 @@ class User extends Authenticatable
 
     public $timestamps = false;
 
-    // public function conversationMain(): HasMany
-    // {
-    //     return $this->hasMany(Conversation::class, 'id', 'user1_id');
-    // }
+    public function userBlock()
+    {
+        return $this->hasMany(UserBlocks::class, 'user_id', 'id');
+    }
 
-    // public function conversationSecondary(): HasMany
-    // {
-    //     return $this->hasMany(Conversation::class, 'id', 'user2_id');
-    // }
+    public function userBlocked()
+    {
+        return $this->belongsTo(UserBlocks::class, 'target_user_id', 'id');
+    }
 
     public function conversations() 
     {

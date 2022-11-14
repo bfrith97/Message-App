@@ -36,4 +36,8 @@ class UserController extends Controller
 
         return view('user', $data);
     }
+
+    public function block(Request $request) {
+        return redirect('/');
+    }
 }

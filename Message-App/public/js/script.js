@@ -41,11 +41,10 @@ const chatSelector2 = document.querySelector('.chat-selector2')
 const chatSelector3 = document.querySelector('.chat-selector3')
 const chatSelector4 = document.querySelector('.chat-selector4')
 
-console.log('Active chat: ' + localStorage.getItem('activeChat'));
 
 function checkSubmit(e) {
   if(e && e.keyCode == 13) {
-     document.forms[0].submit();
+    document.forms[0].submit();
   }
 }
 
@@ -64,7 +63,11 @@ const totalChats = chat.length
 localStorage.setItem('totalChats', totalChats)
 totalChatsLocalStorage = parseInt(localStorage.getItem('totalChats'));
 
-
+if(localStorage.getItem('totalChats') == 0) {
+  localStorage.setItem('activeChat', 0)
+}
+console.log('Total chats: ' + localStorage.getItem('totalChats'));
+console.log('Active chat: ' + localStorage.getItem('activeChat'));
 
 const activeChatNum = 'chat-window' + localStorage.getItem('activeChat');
 const activeChatAmt =  5

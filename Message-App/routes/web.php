@@ -20,6 +20,7 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::get('/users/{id}', [\App\Http\Controllers\UserController::class, 'show']);
+Route::post('/block-user', [\App\Http\Controllers\UserController::class, 'block']);
 
 Route::get('/', [\App\Http\Controllers\IndexController::class, 'show'])->middleware(['auth', 'verified']);
 Route::get('/clear-messages', [\App\Http\Controllers\MessageController::class, 'destroy']);

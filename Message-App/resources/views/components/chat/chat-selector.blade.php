@@ -4,7 +4,7 @@
         <form action="close-chat" method="post">
             @csrf
             <input type="hidden" name="id" id="id" value="{{$window->id}}">
-            <input type="submit" value="X" onclick="localStorage.setItem('activeChat', 0), window.location.reload()">
+            <input class="chat-selector-cross" type="submit" value="X" onclick="window.location.reload()">
         </form>
     </span>
 </div>

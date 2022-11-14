@@ -8,6 +8,7 @@ use App\Models\Message;
 use App\Models\User;
 use App\Models\Conversation;
 use App\Models\ConversationParticipants;
+use App\Models\UserBlocks;
 use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
@@ -17,16 +18,32 @@ class IndexController extends Controller
         $users = User::select()
             ->with([
                 'conversations:*',
-                'messages:*'
+                'messages:*',
+                'userBlock:*',
             ])
             ->get();
 
+        //retrieve conversation messages where message authors are not the same as target_user_id on userblocks
+        $blockList = [];
+        
         $conversations = Conversation::select()
             ->with([
                 'participants:*',
                 'message:*'
             ])
             ->get();
+
+        $userBlocks = UserBlocks::select([
+            'user_id',
+            'target_user_id'
+        ])
+        ->where([
+            'user_id' => auth()->user()->id
+        ])
+        ->get();
+
+        // dd(auth()->user()->id);
+        // dd($userBlocks);
 
         $activeConversations = Conversation::whereRelation('participants', 'user_id', '=', auth()->user()->id)->get();
 
@@ -38,6 +55,7 @@ class IndexController extends Controller
 
         $data = [
                  'users' => $users,
+                 'userBlocks' => $userBlocks,
                  'conversations' => $conversations,
                  'activeConversations' => $activeConversations,
                  'currentUser' => auth()->user()->id,

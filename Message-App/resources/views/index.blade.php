@@ -10,10 +10,15 @@
         <div class="main-title">Web Messenger</div>
         <div class="selectors-bar">
           <div class="chats-selectors">
-            
+            @if (count($activeConversations) < 1)
+                <div class="chat-selector-default">
+                  <span>Please join a chat!</span>
+              </div>
+            @else
               @foreach ($activeConversations as $conversation)
-                    <x-chat.chat-selector :window="$conversation" :active="'active'"/>
+              <x-chat.chat-selector :window="$conversation" :active="'active'"/>
               @endforeach
+            @endif
             </div>
             
             <form class="new-chat" action="new-chat" method="POST">
@@ -24,7 +29,7 @@
         
         <div class="chat-box">
           @foreach ($conversations as $conversation)
-            <x-chat.window :conversations="$conversations" :window="$conversation->id"/>
+            <x-chat.window :conversations="$conversations" :window="$conversation->id" :userBlocks="$userBlocks"/>
             <x-chat.message-form :window="$conversation->id"/>
           @endforeach
         </div>
