@@ -551,3 +551,14 @@ USER
   .block-btn:hover {
     cursor: pointer;
   }
+
+
+  .unblock-btn {
+    background-color: rgb(0, 255, 13);
+    border: 1px solid black;
+    border-radius: 2px;
+  }
+
+  .unblock-btn:hover {
+    cursor: pointer;
+  }

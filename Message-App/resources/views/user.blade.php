@@ -10,14 +10,31 @@
             <br>
             <p class="user-information-bio">{{$user->bio}}</p>
         </div>
-        
         @if ($user->id != auth()->user()->id) 
+            @if (isset($blocked))
+                @if($blocked == false)
+                <form action="/block-user" method="post">
+                    @csrf
+                    <input type="hidden" name="targetuser" id="targetuser" value="{{$user->id}}">
+                    <input type="hidden" name="user" id="user" value={{auth()->user()->id}}>
+                    <input class="block-btn" type="submit" value="Block user">
+                </form>
+                @else
+                <form action="/unblock-user" method="post">
+                    @csrf
+                    <input type="hidden" name="targetuser" id="targetuser" value="{{$user->id}}">
+                    <input type="hidden" name="user" id="user" value={{auth()->user()->id}}>
+                    <input class="unblock-btn" type="submit" value="Unblock user">
+                </form>
+                @endif
+            @else
             <form action="/block-user" method="post">
                 @csrf
                 <input type="hidden" name="targetuser" id="targetuser" value="{{$user->id}}">
                 <input type="hidden" name="user" id="user" value={{auth()->user()->id}}>
                 <input class="block-btn" type="submit" value="Block user">
             </form>
+            @endif
         @endif
     </div>
 </div>

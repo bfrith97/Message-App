@@ -22,9 +22,6 @@ class IndexController extends Controller
                 'userBlock:*',
             ])
             ->get();
-
-        //retrieve conversation messages where message authors are not the same as target_user_id on userblocks
-        $blockList = [];
         
         $conversations = Conversation::select()
             ->with([
@@ -34,7 +31,6 @@ class IndexController extends Controller
             ->get();
 
         $userBlocks = UserBlocks::select([
-            'user_id',
             'target_user_id'
         ])
         ->where([
@@ -42,8 +38,7 @@ class IndexController extends Controller
         ])
         ->get();
 
-        // dd(auth()->user()->id);
-        // dd($userBlocks);
+        $blocksArray = array_column($userBlocks->toArray(), 'target_user_id');
 
         $activeConversations = Conversation::whereRelation('participants', 'user_id', '=', auth()->user()->id)->get();
 
@@ -56,6 +51,7 @@ class IndexController extends Controller
         $data = [
                  'users' => $users,
                  'userBlocks' => $userBlocks,
+                 'blocksArray' => $blocksArray,
                  'conversations' => $conversations,
                  'activeConversations' => $activeConversations,
                  'currentUser' => auth()->user()->id,

@@ -29,7 +29,7 @@
         
         <div class="chat-box">
           @foreach ($conversations as $conversation)
-            <x-chat.window :conversations="$conversations" :window="$conversation->id" :userBlocks="$userBlocks"/>
+            <x-chat.window :conversations="$conversations" :window="$conversation->id" :userBlocks="$userBlocks" :blocksArray="$blocksArray"/>
             <x-chat.message-form :window="$conversation->id"/>
           @endforeach
         </div>
