@@ -36,7 +36,7 @@
 
       </div>
       @foreach ($conversations as $conversation)
-        <x-chat.chat-members :conversations="$conversations" :array="$conversation->id - 1" :window="$conversation->id" :messages="$messages"/>
+        <x-chat.chat-members :conversations="$conversations" :array="$conversation->id - 1" :window="$conversation->id" :messages="$messages" :blocksArray="$blocksArray"/>
       @endforeach
 
     </div>
