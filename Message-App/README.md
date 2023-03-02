@@ -5,3 +5,5 @@
 ### Redo login and register page
 
 ### Redo entire front end when learned react
+
+### Do factory migration and then upload project onto github

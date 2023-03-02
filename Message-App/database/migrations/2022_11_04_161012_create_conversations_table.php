@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('user1_id');
             $table->integer('user2_id');
+            $table->string('name');
         });
     }
 

@@ -18,8 +18,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('password');
+            $table->string('img');
+            $table->string('bio');
+            $table->string('chat_colour');
             $table->string('remember_token')->nullable();
-
         });
     }
 
