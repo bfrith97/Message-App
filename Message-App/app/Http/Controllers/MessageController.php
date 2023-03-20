@@ -9,12 +9,13 @@ use App\Models\User;
 use App\Models\Conversation;
 use App\Models\ConversationParticipants;
 use Illuminate\Support\Facades\Auth;
+use App\Events\MessageSent;
 
 class MessageController extends Controller
 {
     public function store(Request $request)
     {
-        $content = $request->input('content');
+        $content = $request->input('message');
         $id = $request->input('user');
         $conversationId = $request->input('conversation');
 
@@ -36,22 +37,28 @@ class MessageController extends Controller
             {
                 $conversationPartipants->create($participantData);
             }
-        
+
         $data = [
             'content' => $content,
             'user_id' => $id,
             'conversation_id' => $conversationId
         ];
 
+
+
         if ($data['content'] == null)
             {
                 return redirect('/');
             }
-        Message::create($data);
 
-        return redirect('/');
+//        $message = Message::create($data);
+        $message = Message::create($data);
+
+//        event(new MessageSent($message));
+
+        return response()->json(['success' => true]);
     }
-    
+
     public function destroy(Request $request)
     {
         $chat = Message::select();

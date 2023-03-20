@@ -1,7 +1,7 @@
 <div class="container-user container-user-left">
     <x-chat.hint-left />
     <div class="user-buttons">
-      
+
       <div class="user-welcome-txt">Welcome,</div>
       <div class="user-welcome-txt">{{ucwords(explode(' ', auth()->user()->name)[0])}}!</div>
       <form action="/logout" method="post">

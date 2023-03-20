@@ -27,7 +27,7 @@ Route::get('/', [\App\Http\Controllers\IndexController::class, 'show'])->middlew
 Route::get('/clear-messages', [\App\Http\Controllers\MessageController::class, 'destroy']);
 Route::get('/clear-conversations', [\App\Http\Controllers\ConversationController::class, 'destroy']);
 
-Route::post('/send', [\App\Http\Controllers\MessageController::class, 'store']);
+Route::post('/send-message', [\App\Http\Controllers\MessageController::class, 'store']);
 Route::post('/update-user', [\App\Http\Controllers\UserController::class, 'update']);
 Route::post('/update-chat', [\App\Http\Controllers\ConversationController::class, 'update']);
 
