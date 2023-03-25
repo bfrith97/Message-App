@@ -6,10 +6,12 @@
     <div class="container-parent">
       <x-chat.container-left/>
 
-      <div class="container-chat">
+      <div class="card w-50 opacity-75">
         <div class="user-details"></div>
 
-        <div class="main-title">Web Messenger</div>
+        <div class="card-header text-center pb-0">
+            <h6>Web Messenger</h6>
+        </div>
         <div class="selectors-bar">
           <div class="chats-selectors">
             @if (count($activeConversations) < 1)
