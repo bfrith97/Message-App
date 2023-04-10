@@ -1,3 +1,4 @@
+
 <div class="chat-window chat-window{{$window}}">
     <div class="message-top">
       @foreach ($conversations as $conversation)

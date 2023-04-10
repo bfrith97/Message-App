@@ -143,7 +143,7 @@ switch (activeChatNum) {
 
   case 'chat-window4':
     console.log('four')
-    window1.classList.remove('chat-window-active') 
+    window1.classList.remove('chat-window-active')
     window2.classList.remove('chat-window-active')
     window3.classList.remove('chat-window-active')
     window4.classList.add('chat-window-active')
@@ -180,90 +180,22 @@ chat.forEach(selector => {
   })
 });
 
-const chatListWindow = document.querySelector('.chat-list-window')
 const chatListBtn = document.querySelector('.btn-chatlist')
 const chatListCloseBtn = document.querySelector('.list-window-close')
 const userModalBackground = document.querySelector('.modal-background');
-const newChatBtn = document.querySelector('.new-chat-btn')
 
 let chatListHidden = 1;
-
-newChatBtn.addEventListener('click', () => {
-  if (chatListHidden == 1) {
-    chatListWindow.style.display = 'initial'
-    userModalBackground.style.display = 'initial'
-    setTimeout(() => {
-      chatListWindow.style.opacity = '100%';
-      userModalBackground.style.opacity = '100%';
-      chatListHidden = 0
-    }, 10);
-    
-  } else if (chatListHidden == 0) {
-    chatListWindow.style.opacity = '0%';
-    userModalBackground.style.opacity = '0%';
-    chatListHidden = 1
-    setTimeout(() => {
-      chatListWindow.style.display = 'none';
-      userModalBackground.style.display = 'none'
-    }, 250);
-  }
-})
-
-
-
-chatListBtn.addEventListener('click', () => {
-  if (chatListHidden == 1) {
-    chatListWindow.style.display = 'initial'
-    userModalBackground.style.display = 'initial'
-    setTimeout(() => {
-      chatListWindow.style.opacity = '100%';
-      userModalBackground.style.opacity = '100%';
-      chatListHidden = 0
-    }, 10);
-    
-  } else if (chatListHidden == 0) {
-    chatListWindow.style.opacity = '0%';
-    userModalBackground.style.opacity = '0%';
-    chatListHidden = 1
-    setTimeout(() => {
-      chatListWindow.style.display = 'none';
-      userModalBackground.style.display = 'none'
-    }, 250);
-  }
-})
-
-chatListCloseBtn.addEventListener('click', () => {
-  if (chatListHidden == 1) {
-    chatListWindow.style.display = 'initial'
-    userModalBackground.style.display = 'initial'
-    setTimeout(() => {
-      chatListWindow.style.opacity = '100%';
-      userModalBackground.style.opacity = '100%';
-      chatListHidden = 0
-    }, 10);
-    
-  } else if (chatListHidden == 0) {
-    chatListWindow.style.opacity = '0%';
-    userModalBackground.style.opacity = '0%';
-    chatListHidden = 1
-    setTimeout(() => {
-      chatListWindow.style.display = 'none';
-      userModalBackground.style.display = 'none'
-    }, 250);
-  }
-})
 
 
 // USERS
 
 const userModal = document.querySelector('.user-modal');
-const signOutBtn = document.querySelector(".btn-signout");
+const signOutBtn = document.querySelector("#btn-signout");
 const ctnrUserRight = document.querySelector(".container-user-right");
 const ctnrUserLeft = document.querySelector(".container-user-left");
 const userImg = document.querySelector(".user-image");
-const editUserBtn = document.querySelector('.btn-editinfo');
+const editUserBtn = document.querySelector('#btn-editinfo');
 const userModalCloseBtn = document.querySelector('.user-window-close');
-const containerLeft = document.querySelector('.container-user-left');
 
 let userModalHidden = 1;
 editUserBtn.addEventListener('click', () => {
@@ -312,31 +244,18 @@ userModalBackground.addEventListener('click', () => {
   userModal.style.opacity = '0%';
   userModalBackground.style.opacity = '0%';
   userModalHidden = 1
-  chatListWindow.style.opacity = '0%';
   userModalBackground.style.opacity = '0%';
   chatListHidden = 1
   setTimeout(() => {
     userModal.style.display = 'none';
     userModalBackground.style.display = 'none'
-    chatListWindow.style.display = 'none';
     userModalBackground.style.display = 'none'
   }, 250);
-})
-
-containerLeft.addEventListener('mouseover', () => {
-  containerLeft.style.transform = 'translateX(0%)';
-})
-
-containerLeft.addEventListener('mouseleave', () => {
-  setTimeout(() => {
-    containerLeft.style.transform = 'translateX(80%)';
-  }, 100);
 })
 
 // SIGN OUT
 
 signOutBtn.addEventListener("click", () => {
-  console.log('hello');
   modalBkgrnd.style.display = "block";
   lgnModal.style.display = "block";
   chatFirst.classList.remove("chatbar-active");

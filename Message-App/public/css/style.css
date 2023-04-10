@@ -3,7 +3,7 @@
 }
 
 body {
-    background: linear-gradient(to bottom right, rgb(187, 247, 255), rgb(253, 110, 247));
+    background: linear-gradient(to bottom right, rgb(166, 244, 255), rgb(255, 118, 157));
     font-family: Arial, Helvetica, sans-serif;
     height: 100vh;
 }
@@ -110,15 +110,6 @@ USER BOX
 }
 
 .container-members {
-
-    border: 1px solid rgb(197, 197, 197);
-
-    width: 10%;
-    height: fit-content;
-    min-width: 135px;
-    margin-top: 64px;
-    padding-top: 20px;
-
     display: none;
 }
 
@@ -217,27 +208,6 @@ MESSAGES
     /* padding: 2px 5px; */
 }
 
-.chat-selector, .chat-selector-default {
-    display: flex;
-    justify-content: space-between;
-
-    width: fit-content;
-    text-align: left;
-    font-size: 20px;
-    margin: -5px 0;
-    padding: 2px 5px;
-    white-space: nowrap;
-    background-color: rgb(230, 230, 230);
-    flex: 1;
-    border: 1px solid rgb(197, 197, 197);
-    transition: background-color 0.2s;
-}
-
-.chat-selector:hover {
-    background-color: rgb(221, 219, 219);
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
 
 .chat-selector-active {
     background-color: rgb(168, 168, 168) !important;
@@ -369,11 +339,7 @@ CHAT
 }
 
 .message-content {
-    width: 99.5%;
-    border: none;
-    resize: none;
-    font-size: 18px;
-    display: flex;
+
 }
 
 .message-content:focus {
@@ -382,10 +348,6 @@ CHAT
 
 .message-form {
     display: none;
-    height: 4vh;
-    width: 97%;
-    margin: 0 auto;
-    border: 1px solid rgb(197, 197, 197);
 }
 
 .form-active {
@@ -567,4 +529,40 @@ USER
 
 .unblock-btn:hover {
     cursor: pointer;
+}
+
+.btn-secondary {
+    background-color: rgba(255, 167, 234, 0.18);
+    border-color: rgba(180, 180, 180, 0.53);
+    color: #090909;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(138, 138, 138, 0.87);
+    border-color: rgba(180, 180, 180, 0.53);
+}
+
+.card {
+    background-color: rgba(136, 161, 255, 0.31);
+}
+
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+::-webkit-scrollbar-track {
+    background: rgba(241, 241, 241, 0.45);
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border: 0;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+
 }

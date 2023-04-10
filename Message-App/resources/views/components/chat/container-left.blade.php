@@ -1,22 +1,22 @@
-<div class="container-user container-user-left">
-    <x-chat.hint-left />
-    <div class="user-buttons">
+<div class="card-header p-0 border-bottom-0">
+    <div class="d-flex flex-column text-center border-end h-100 pt-3"
+         style="width: 7.5rem; border-color: rgba(117,117,117,0.49) !important;">
+        <div class="d-flex justify-content-evenly">
+            <img src="{{auth()->user()->img}}" style="width: 30px; height: 30px" class="rounded-pill"/>
+            <h6 class="d-flex align-items-center mb-0"><strong>{{ucwords(explode(' ', auth()->user()->name)[0])}}</strong></h6>
+        </div>
 
-      <div class="user-welcome-txt">Welcome,</div>
-      <div class="user-welcome-txt">{{ucwords(explode(' ', auth()->user()->name)[0])}}!</div>
-      <form action="/logout" method="post">
-        @csrf
-        <input class="btn-user btn-signout" type="submit" value="Log out">
-      </form>
-      <button class="btn-user btn-editinfo">Edit User</button>
-      <br>
-      <button class="btn-user btn-chatlist">Chat List</button>
-      <br>
-      <a href="/clear-messages">
-        <button class="btn-user btn-clearchat" onclick="return confirm('Are you sure you want to delete the chat contents for everyone?')">Clear Messages</button>
-      </a>
-      {{-- <a href="/clear-conversations">
-        <button class="btn-user btn-clearconversations" onclick="return confirm('Are you sure you want to delete all conversations for everyone?')">Clear Chats</button>
-      </a> --}}
+        <button class="btn btn-secondary btn-sm mb-2 mt-5 py-2 text-nowrap w-100 rounded-0">Chat Info</button>
+        <button class="btn btn-secondary btn-sm mb-2  py-2 text-nowrap w-100 rounded-0">Contacts</button>
+        <button class="btn btn-secondary btn-sm mb-2  py-2 text-nowrap w-100 rounded-0">Settings</button>
+
+        <button id="btn-editinfo" class="btn btn-secondary btn-sm mb-2  mt-auto py-2 text-nowrap w-100 rounded-0">Edit
+            User
+        </button>
+        <form action="/logout" method="post">
+            @csrf
+            <input id="btn-signout" class="btn btn-secondary btn-sm py-2 text-nowrap w-100 rounded-0" type="submit"
+                   value="Log out" style="border-radius: 0 0 0 5px !important;">
+        </form>
     </div>
-  </div>
+</div>

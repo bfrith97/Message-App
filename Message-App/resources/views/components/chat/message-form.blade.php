@@ -1,9 +1,9 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<form action="/send" method="post" class="message-form form form{{$window}}">
+<form action="/send" method="post" class="message-form form form{{$window}} m-2">
     @csrf
     <input type="hidden" id="conversation{{$window}}" name="conversation" value="{{$window}}">
     <input type="hidden" id="user{{$window}}" name="user" value="{{auth()->user()->id}}">
-    <input class="message-content message-content{{$window}}" type="text" id="content" name="content" autofocus>
+    <input class="w-100  message-content message-content{{$window}}" type="text" id="content" name="content" autofocus>
     <input type="submit" value="Submit" onkeypress="return checkSubmit(event)">
 </form>
 <script>
@@ -24,8 +24,8 @@
             .then(response => response.json())
             .then(data => {
                 document.querySelector('.message-content{{$window}}').value = '';
-                document.querySelector('.message-top').innerHTML +=  '<div class="message-label-one"><a href="users/{{auth()->user()->id}}">You</a></div>';
-                document.querySelector('.message-top').innerHTML +=  '<div class="message-user-one" style="{{'background-color:' . auth()->user()->chat_colour }}">' + message + '</div>';
+                document.querySelector('.message-top').innerHTML += '<div class="message-label-one"><a href="users/{{auth()->user()->id}}">You</a></div>';
+                document.querySelector('.message-top').innerHTML += '<div class="message-user-one" style="{{'background-color:' . auth()->user()->chat_colour }}">' + message + '</div>';
             })
             .catch(error => {
                 console.error("Error:", error);
