@@ -1,6 +1,6 @@
 # Chat App
 
-This is a simple chat app created with Laravel and Bootstrap.
+This project is a simple chat application that allows users to join existing conversations and send messages to other users in real time. It was built using PHP and Laravel, with a Bootstrap front-end.
 
 ## Features
 
