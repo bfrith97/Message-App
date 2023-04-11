@@ -15,6 +15,7 @@ This is a simple chat app created with Laravel and Bootstrap.
 - Add functionality to start private conversations.
 - Implement real-time message receiving without refreshing using Pusher or Socket.io.
 - Improve the interface to be more responsive.
+- Add functionality to three sidebar buttons.
 
 ## Setup
 
