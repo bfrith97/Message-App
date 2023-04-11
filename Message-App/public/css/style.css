@@ -285,8 +285,7 @@ CHAT
 
 .chat-window {
 
-    border: 1px solid rgb(197, 197, 197);
-    border-right: 0;
+    border-bottom: 1px solid rgb(197, 197, 197);
     height: 93%;
     overflow-y: scroll;
     display: none;
