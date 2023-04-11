@@ -20,7 +20,7 @@ This project is a simple chat application that allows users to join existing con
 ## Setup
 
 1. Clone the repository.
-2. Run 'cd .\Message-App\'
+2. Run `cd .\Message-App\`.
 3. Run `composer install`.
 4. Copy the `.env.example` file to `.env`.
 5. Run `php artisan key:generate`.
