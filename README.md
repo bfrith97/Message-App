@@ -20,12 +20,13 @@ This project is a simple chat application that allows users to join existing con
 ## Setup
 
 1. Clone the repository.
-2. Run `composer install`.
-3. Copy the `.env.example` file to `.env`.
-4. Run `php artisan key:generate`.
-5. Set up a database and add the database information to the `.env` file.
-6. Run `php artisan migrate` to create the database tables.
-7. Run `php artisan db:seed` to seed the database with sample data.
+2. Run 'cd .\Message-App\'
+3. Run `composer install`.
+4. Copy the `.env.example` file to `.env`.
+5. Run `php artisan key:generate`.
+6. Set up a database and add the database information to the `.env` file.
+7. Run `php artisan migrate` to create the database tables.
+8. Run `php artisan db:seed` to seed the database with sample data.
 
 ## Usage
 
@@ -35,7 +36,7 @@ This project is a simple chat application that allows users to join existing con
 
 ## Images
 
-<img src="https://i.imgur.com/GmlfZNE.png"  width="600">
+<img src="https://i.imgur.com/T9qVsEV.png"  width="600">
 
 <img src="https://i.imgur.com/w7T4MCK.png"  width="600">
 
