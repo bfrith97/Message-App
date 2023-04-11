@@ -32,3 +32,11 @@ This is a simple chat app created with Laravel and Bootstrap.
 1. Run `php artisan serve`.
 2. Navigate to the application in your web browser.
 3. Login with the email 'user@email.com' with the password 'password'.
+
+## Images
+
+<img src="https://i.imgur.com/GmlfZNE.png"  width="600">
+
+<img src="https://i.imgur.com/w7T4MCK.png"  width="600">
+
+<img src="https://i.imgur.com/GSNYLZG.png"  width="600">
