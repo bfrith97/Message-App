@@ -49,5 +49,23 @@ class UsersTableSeeder extends Seeder
             'img' => 'https://avatars.akamai.steamstatic.com/741268901ce1f848d517241c2314c8c2a6b03ece_full.jpg',
             'chat_colour' => '#1e9661',
         ]);
+
+        User::create([
+            'name' => 'Karl Pilkington',
+            'email' => 'orange@email.com',
+            'password' => Hash::make('head'),
+            'bio' => "I think people would live a bit longer if they didn't know how old they were. Age puts restrictions on things.",
+            'img' => 'https://yt3.googleusercontent.com/ytc/AL5GRJXDgoL66Mij6_z4ZkAvBpFuzRAXsKmwSYhxQZEm=s900-c-k-c0x00ffffff-no-rj',
+            'chat_colour' => '#ff7c2b',
+        ]);
+
+        User::create([
+            'name' => 'Ricky Gervais',
+            'email' => 'brent@email.com',
+            'password' => Hash::make('bully'),
+            'bio' => "Karl Pilkington has the roundest head, I think, in the world.",
+            'img' => 'https://pbs.twimg.com/profile_images/633372900452663297/uc__OXgS_400x400.jpg',
+            'chat_colour' => '#003270',
+        ]);
     }
 }

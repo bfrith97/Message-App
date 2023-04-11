@@ -1,3 +1,9 @@
+@media only screen and (max-width: 1600px) {
+    #container {
+        width: 75vw !important;
+    }
+}
+
 .preload {
     transition: none !important;
 }
@@ -272,7 +278,7 @@ CHAT
 }
 
 .chat-box {
-
+    color: #1e9661;
     height: 70vh;
     border-radius: 8px 8px 0 0;
 }
@@ -280,8 +286,8 @@ CHAT
 .chat-window {
 
     border: 1px solid rgb(197, 197, 197);
-    height: 89%;
-    margin: 10px;
+    border-right: 0;
+    height: 93%;
     overflow-y: scroll;
     display: none;
     flex-direction: column-reverse;
@@ -569,3 +575,4 @@ USER
 ::-webkit-scrollbar-thumb:hover {
 
 }
+

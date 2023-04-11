@@ -5,7 +5,7 @@
 <x-chat.user-modal/>
 <div class="container-parent">
 
-    <div class="card w-50 opacity-75 d-flex flex-row">
+    <div id="container" class="card w-50 opacity-75 d-flex flex-row">
         <x-chat.container-left/>
         <div class="w-100">
             <div class="card-header text-center pb-0">

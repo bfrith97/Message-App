@@ -29,5 +29,15 @@ class ConversationParticipantsTableSeeder extends Seeder
             'user_id' => 3,
             'conversation_id' => 1,
         ]);
+
+        ConversationParticipants::create([
+            'user_id' => 4,
+            'conversation_id' => 2,
+        ]);
+
+        ConversationParticipants::create([
+            'user_id' => 5,
+            'conversation_id' => 2,
+        ]);
     }
 }
