@@ -15,11 +15,11 @@ class MessageController extends Controller
 {
     public function store(Request $request)
     {
-        $content = $request->input('message');
+        $content = strip_tags($request->input('message'));
         $id = $request->input('user');
         $conversationId = $request->input('conversation');
 
-        $conversationPartipants = ConversationParticipants::where('id', $conversationId);
+        $conversationParticipants = ConversationParticipants::where('id', $conversationId);
 
         $participantData = [
             'user_id' => $id,
@@ -35,7 +35,7 @@ class MessageController extends Controller
             ->doesntExist()
             )
             {
-                $conversationPartipants->create($participantData);
+                $conversationParticipants->create($participantData);
             }
 
         $data = [
@@ -46,15 +46,13 @@ class MessageController extends Controller
 
 
 
+
         if ($data['content'] == null)
             {
                 return redirect('/');
             }
 
-//        $message = Message::create($data);
         $message = Message::create($data);
-
-//        event(new MessageSent($message));
 
         return response()->json(['success' => true]);
     }
@@ -64,8 +62,8 @@ class MessageController extends Controller
         $chat = Message::select();
         $chat->delete();
 
-        $conversationPartipants = ConversationParticipants::select();
-        $conversationPartipants->delete();
+        $conversationParticipants = ConversationParticipants::select();
+        $conversationParticipants->delete();
 
         return redirect('/');
     }

@@ -299,8 +299,11 @@ CHAT
     margin: 25px 0 25px 0;
     padding: 10px;
     border-radius: 15px 15px 15px 0;
-    font-size: 20px;
+    font-size: 15px;
     overflow-wrap: anywhere;
+}
+
+.dd { color: #1e9661
 }
 
 .message-user-one {
@@ -310,7 +313,7 @@ CHAT
     margin: 0 0 25px auto;
     padding: 10px;
     border-radius: 15px 15px 0 15px;
-    font-size: 20px;
+    font-size: 15px;
     overflow-wrap: anywhere;
 }
 

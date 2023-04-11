@@ -39,8 +39,8 @@ class ConversationController extends Controller
         $messages = Message::select();
         $messages->delete();
 
-        $conversationPartipants = ConversationParticipants::select();
-        $conversationPartipants->delete();
+        $conversationParticipants = ConversationParticipants::select();
+        $conversationParticipants->delete();
 
         return redirect('/');
     }
